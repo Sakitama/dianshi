@@ -1,0 +1,47 @@
+import React, { Component } from 'react';
+import style from './carousel.css';
+
+class Carousel extends Component {
+    componentDidMount() {
+        this.swiper = new window.Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            loop: true,
+            autoplay: 2500,
+            autoplayDisableOnInteraction: false
+        });
+    }
+    render() {
+        let styleObj = null,
+            styleHeight = {
+                height: `${79 * this.props.width / 160}px`
+            },
+        content = this.props.data.video_list.map(video => {
+            styleObj = {
+                backgroundImage: `url(${video.img})`
+            };
+            return (
+                <div key={video.id} style={styleObj} className="swiper-slide pr df jcc aic fdc bsc">
+                    <div className="mask pa" />
+                    <span className={`${style.title} cfff fwb tac`}>{video.title}</span>
+                    <span className={`${style.desc} cfff`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>
+                </div>
+            );
+        });
+        return (
+            <div ref={div => {
+                this.div = div;
+            }} style={styleHeight}>
+                <div className="swiper-container">
+                    <div className="swiper-wrapper">
+                        {content}
+                    </div>
+                    <div className="swiper-pagination" />
+                </div>
+            </div>
+        );
+    }
+}
+
+export default Carousel;
+

@@ -1,0 +1,78 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+}
+
+html, body, #root, .App {
+    height: 100%;
+}
+
+.df {
+    display: flex;
+}
+
+.aic {
+    align-items: center;
+}
+
+.jcc {
+    justify-content: center;
+}
+
+.tdn {
+    text-decoration: none;
+}
+
+.jcfe {
+    justify-content: flex-end;
+}
+
+.cfff {
+    color: #fff;
+}
+
+.fww {
+    flex-wrap: wrap;
+}
+
+.oh {
+    overflow: hidden;
+}
+
+.pa {
+    position: absolute;
+}
+
+.pr {
+    position: relative;
+}
+
+.tac {
+    text-align: center;
+}
+
+.fwb {
+    font-weight: bold;
+}
+
+.brnr {
+    background-repeat: no-repeat;
+}
+
+.bsc {
+    background-size: cover;
+}
+
+.mask {
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+}
+
+.fdc {
+    flex-direction: column;
+}

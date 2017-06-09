@@ -1,0 +1,21 @@
+:local .navigation {
+    height: 8%;
+    background: #010101;
+}
+
+:local .btn {
+    flex: 1;
+    font-size: 12px;
+}
+
+:local .icon {
+    width: 2em;
+}
+
+:local .menu {
+    padding-left: 1em;
+}
+
+:local .search {
+    padding-right: 1em;
+}
