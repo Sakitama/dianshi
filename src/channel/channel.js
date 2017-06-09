@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import style from './channel.css';
+
 import movie from './movie.jpg';
 import series from './series.jpg';
 import record from './record.jpg';
@@ -42,7 +43,6 @@ import gongyi from './gongyi.jpg';
 import audio from './audio.jpg';
 import vr from './vr.jpg';
 import threed from './threed.jpg';
-import BScroll from 'better-scroll';
 
 const pictureList = [
     movie,
@@ -109,10 +109,8 @@ class Channel extends Component {
     }
 
     componentDidUpdate() {
-        this.BScroll = new BScroll(this.div, {
-            click: true,
-            bounce: false,
-            HWCompositing: true
+        new window.IScroll(this.div, {
+            bounce: false
         });
     }
 
@@ -128,7 +126,7 @@ class Channel extends Component {
                 };
                 return (
                     <li key={item.id} style={styleObj} className={`${style.item} cfff aic jcc df brnr bsc pr`}>
-                        <div className="mask pa" />
+                        <div className="mask pa h100 w100" />
                         <span className={`${style.text} fwb`}>{`# ${item.name} #`}</span>
                     </li>
                 );
@@ -137,7 +135,7 @@ class Channel extends Component {
         return (
             <div ref={div => {
                 this.div = div;
-            }} className={`${style.channel} oh`}>
+            }} className="h100 oh">
                 <ul className="fww df">
                     {content}
                 </ul>

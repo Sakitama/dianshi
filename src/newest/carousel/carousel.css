@@ -1,0 +1,7 @@
+:local .title {
+    margin-bottom: 20px;
+}
+
+:local .title, :local .desc {
+    z-index: 0;
+}

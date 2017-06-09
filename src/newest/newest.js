@@ -1,32 +1,8 @@
 import React, {Component} from 'react';
 import style from './newest.css';
-import BScroll from 'better-scroll';
-import Carousel from "../carousel/carousel";
-
-class Item extends Component {
-    render() {
-        let videoList = this.props.videoList,
-            styleObj = null;
-        return (
-            <ul>
-                {videoList.map(video => {
-                    styleObj = {
-                        height: `${9 * this.props.width / 16}px`,
-                        backgroundImage: `url(${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg)`
-                    };
-                    return (
-                        <li style={styleObj} key={video.id} className="pr brnr bsc">
-                            <div className="mask pa" />
-                            <span className={`${style.title} cfff pa fwb`}>{video.title}</span>
-                            <span className={`${style.desc} cfff pa`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>
-                        </li>
-                    )
-                })}
-            </ul>
-        );
-
-    }
-}
+import Carousel from "./carousel/carousel";
+import Item from './item/item';
+import Loading from "../loading/loading";
 
 class Newest extends Component {
     state = {
@@ -48,17 +24,13 @@ class Newest extends Component {
     }
 
     componentDidUpdate() {
-        this.BScroll = new BScroll(this.div, {
-            click: true,
-            bounce: false,
-            HWCompositing: true
-        });
+        new window.IScroll(this.div);
     }
 
     render() {
         let isDataReady = this.state.isDataReady,
             data = this.state.data,
-            content = [],
+            content = null,
             list = [];
         if (isDataReady) {
             for (let i = 1; i < data.length; i++) {
@@ -77,11 +49,13 @@ class Newest extends Component {
                     </ul>
                 </div>
             );
+        } else {
+            content = <Loading />
         }
         return (
             <div ref={div => {
                 this.div = div;
-            }} className={`${style.newest} oh`}>
+            }} className="h100 oh">
                 {content}
             </div>
         );

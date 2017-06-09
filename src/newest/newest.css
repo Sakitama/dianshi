@@ -1,28 +1,5 @@
-:local .newest {
-    height: 92%;
-}
-
-:local .mask {
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, .4);
-}
-
 :local .type {
     line-height: 40px;
     background: #010101;
-    font-size: 12px;
-}
-
-:local .title {
-    bottom: 52px;
-    padding: 0 20px;
-}
-
-:local .desc {
-    padding: 0 20px;
-    bottom: 20px;
     font-size: 12px;
 }

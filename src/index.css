@@ -5,8 +5,20 @@
     font-size: 16px;
 }
 
-html, body, #root, .App {
+html, body, #root {
     height: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.App {
+    background: #080808;
 }
 
 .df {
@@ -21,16 +33,16 @@ html, body, #root, .App {
     justify-content: center;
 }
 
-.tdn {
-    text-decoration: none;
-}
-
 .jcfe {
     justify-content: flex-end;
 }
 
 .cfff {
     color: #fff;
+}
+
+.c808080 {
+    color: #808080;
 }
 
 .fww {
@@ -68,8 +80,6 @@ html, body, #root, .App {
 .mask {
     left: 0;
     top: 0;
-    width: 100%;
-    height: 100%;
     background: rgba(0, 0, 0, .5);
 }
 

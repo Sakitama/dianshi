@@ -3,7 +3,7 @@ import style from './carousel.css';
 
 class Carousel extends Component {
     componentDidMount() {
-        this.swiper = new window.Swiper('.swiper-container', {
+        this.swiper = new window.Swiper('.carousel-swiper', {
             pagination: '.swiper-pagination',
             paginationClickable: true,
             loop: true,
@@ -22,7 +22,7 @@ class Carousel extends Component {
             };
             return (
                 <div key={video.id} style={styleObj} className="swiper-slide pr df jcc aic fdc bsc">
-                    <div className="mask pa" />
+                    <div className="mask pa h100 w100" />
                     <span className={`${style.title} cfff fwb tac`}>{video.title}</span>
                     <span className={`${style.desc} cfff`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>
                 </div>
@@ -32,7 +32,7 @@ class Carousel extends Component {
             <div ref={div => {
                 this.div = div;
             }} style={styleHeight}>
-                <div className="swiper-container">
+                <div className="carousel-swiper h100 swiper-container">
                     <div className="swiper-wrapper">
                         {content}
                     </div>

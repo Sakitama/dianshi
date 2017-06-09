@@ -1,1 +1,7 @@
+:local .App {
+    background: #333;
+}
 
+.App-swiper {
+    height: 92%;
+}
