@@ -3,7 +3,7 @@ import style from './carousel.css';
 
 class Carousel extends Component {
     componentDidMount() {
-        this.swiper = new window.Swiper('.carousel-swiper', {
+        this.carouselSwiper = new window.Swiper('.carousel-swiper', {
             pagination: '.swiper-pagination',
             paginationClickable: true,
             loop: true,
