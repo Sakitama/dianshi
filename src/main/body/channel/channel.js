@@ -90,38 +90,18 @@ const pictureList = [
 ];
 
 class Channel extends Component {
-    state = {
-        isDataReady: false,
-        data: null
-    };
-
     componentDidMount() {
-        fetch('http://iface.qiyi.com/openapi/batch/channel?type=list&version=7.5&app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=12&dev_os=10.3.1&dev_ua=iPhone9,3&dev_hw=%7B%22cpu%22%3A0%2C%22gpu%22%3A%22%22%2C%22mem%22%3A%2250.4MB%22%7D&net_sts=1&scrn_sts=1&scrn_res=1334*750&scrn_dpi=153600&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=iPhone&core=1&req_sn=1493946331320&req_times=1')
-            .then(response => response.json())
-            .then(body => {
-                this.setState({
-                    isDataReady: true,
-                    data: body.data
-                });
-            }).catch(e => {
-                console.log(e);
-            });
-    }
-
-    componentDidUpdate() {
         new window.IScroll(this.div, {
             bounce: false
         });
     }
 
     render() {
-        let isDataReady = this.state.isDataReady,
-            styleObj = null,
-            content = null;
-        if (isDataReady) {
-            content = this.state.data.map((item, i) => {
+        let styleObj = null,
+            data = this.props.channelPageData,
+            content = data.map((item, i) => {
                 styleObj = {
-                    height: `${this.div.clientWidth / 2}px`,
+                    height: `${this.props.width / 2}px`,
                     backgroundImage: `url(${pictureList[i]})`
                 };
                 return (
@@ -131,7 +111,6 @@ class Channel extends Component {
                     </li>
                 );
             });
-        }
         return (
             <div ref={div => {
                 this.div = div;

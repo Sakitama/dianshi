@@ -1,47 +1,42 @@
 import React, {Component} from 'react';
 import style from './App.css';
-import Navigation from './navigation/navigation';
-import Newest from './newest/newest';
-import Channel from './channel/channel';
+import Loading from './loading/loading';
+import Main from './main/main';
+
+let urls = [
+    'http://iface.qiyi.com/openapi/batch/recommend?app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=12&dev_os=10.3.1&dev_ua=iPhone9,3&dev_hw=%7B%22cpu%22%3A0%2C%22gpu%22%3A%22%22%2C%22mem%22%3A%2250.4MB%22%7D&net_sts=1&scrn_sts=1&scrn_res=1334*750&scrn_dpi=153600&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=iPhone&core=1&req_sn=1493946331320&req_times=1',
+    'http://iface.qiyi.com/openapi/batch/channel?type=list&version=7.5&app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=12&dev_os=10.3.1&dev_ua=iPhone9,3&dev_hw=%7B%22cpu%22%3A0%2C%22gpu%22%3A%22%22%2C%22mem%22%3A%2250.4MB%22%7D&net_sts=1&scrn_sts=1&scrn_res=1334*750&scrn_dpi=153600&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=iPhone&core=1&req_sn=1493946331320&req_times=1'
+];
 
 class App extends Component {
     state = {
-        currentSlide: 0
+        isDataReady: false,
+        newestPageData: null,
+        channelPageData: null
     };
-    slideTo = (e) => {
-        let index = Number(e.currentTarget.dataset.index);
-        this.setState({
-            currentSlide: index
-        });
-        this.appSwiper.slideTo(index, 300, false);
-    };
-    slideTag = index => {
-        this.setState({
-            currentSlide: index
-        });
-    };
+
     componentDidMount() {
-        this.appSwiper = new window.Swiper('.App-swiper', {
-            resistanceRatio: 0,
-            onSlideChangeEnd: swiper => {
-                this.slideTag(swiper.realIndex);
-            }
+        Promise.all(urls.map(url => fetch(url).then(response => response.json()))).then(json => {
+            this.setState({
+                isDataReady: true,
+                newestPageData: json[0].data,
+                channelPageData: json[1].data
+            });
         });
     }
+
     render() {
+        let content = null;
+        if (this.state.isDataReady) {
+            content = <Main width={this.div.clientWidth} newestPageData={this.state.newestPageData} channelPageData={this.state.channelPageData} />;
+        } else {
+            content = <Loading />
+        }
         return (
-            <div className={`${style.App} h100`}>
-                <Navigation currentSlide={this.state.currentSlide} slideTo={this.slideTo} />
-                <div className="App-swiper swiper-container">
-                    <div className="swiper-wrapper">
-                        <div className="swiper-slide">
-                            <Newest />
-                        </div>
-                        <div className="swiper-slide">
-                            <Channel />
-                        </div>
-                    </div>
-                </div>
+            <div ref={div => {
+                this.div = div;
+            }} className={`${style.App} h100`}>
+                {content}
             </div>
         );
     }
