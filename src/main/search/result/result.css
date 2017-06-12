@@ -10,7 +10,6 @@
 }
 
 :local .item {
-    height: 100px;
     padding: 15px 15px 0 15px;
 }
 
@@ -22,8 +21,14 @@
     padding-bottom: 15px;
 }
 
+:local .iwrap {
+    flex-basis: 170px;
+    height: 100px;
+}
+
 :local .text {
     margin-left: 15px;
+    flex: 1;
 }
 
 :local .desc {

@@ -27,7 +27,7 @@ class Carousel extends Component {
                 backgroundImage: `url(${video.img})`
             };
             return (
-                <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={video.id} style={styleObj} className="swiper-slide pr df jcc aic fdc bsc">
+                <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={video.id} style={styleObj} className="swiper-slide pr df jcc aic fdc bsc brnr">
                     <div className="mask pa h100 w100" />
                     <span className={`${style.title} cfff fwb tac`}>{video.title}</span>
                     <span className={`${style.desc} cfff`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>

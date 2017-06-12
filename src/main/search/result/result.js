@@ -9,24 +9,28 @@ class Result extends Component {
     };
 
     componentDidMount() {
-        this.resultIScroll = new window.IScroll(this.div, {
+        new window.IScroll(this.div, {
             bounce: false,
             click: true
         });
     }
 
-    componentDidUpdate() {
+/*    componentDidUpdate() {
         setTimeout(() => {
             this.resultIScroll.refresh();
         }, 0);
-    }
+    }*/
 
     render() {
         let data = this.props.searchResult,
+            styleObj = null,
             list = data.map(video => {
+                styleObj = {
+                    backgroundImage: `url(${video.img.slice(0, video.img.lastIndexOf('.'))}_170_100.jpg)`
+                };
                 return (
                     <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={video.id} className={`${style.item} df`}>
-                        <img src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_170_100.jpg`} alt={video.short_title} />
+                        <div style={styleObj} className={`${style.iwrap} brnr bsc`} />
                         <div className={`${style.text} df fdc jcc`}>
                             <span className={`${style.title} cfff`}>{video.title}</span>
                             <span className={`${style.desc} cfff`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>
