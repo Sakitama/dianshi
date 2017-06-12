@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import style from './carousel.css';
 
 class Carousel extends Component {
+    callNative = e => {
+        let aid = e.currentTarget.dataset.aid;
+        let tvid = e.currentTarget.dataset.tvid;
+        window.location.href = 'iqiyi://mobile/player?aid=' + aid + '&tvid=' + tvid + '&ftype=27&to=3&url=' + encodeURIComponent(window.location.href);
+    };
+
     componentDidMount() {
         this.carouselSwiper = new window.Swiper('.carousel-swiper', {
             pagination: '.swiper-pagination',
@@ -21,7 +27,7 @@ class Carousel extends Component {
                 backgroundImage: `url(${video.img})`
             };
             return (
-                <div key={video.id} style={styleObj} className="swiper-slide pr df jcc aic fdc bsc">
+                <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={video.id} style={styleObj} className="swiper-slide pr df jcc aic fdc bsc">
                     <div className="mask pa h100 w100" />
                     <span className={`${style.title} cfff fwb tac`}>{video.title}</span>
                     <span className={`${style.desc} cfff`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>

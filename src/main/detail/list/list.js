@@ -7,7 +7,8 @@ import Item from '../../subject/body/newest/item/item';
 class List extends Component {
     componentDidMount() {
         this.listIScroll = new window.IScroll(this.div, {
-            bounce: false
+            bounce: false,
+            click: true
         });
     }
 

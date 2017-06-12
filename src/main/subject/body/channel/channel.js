@@ -96,7 +96,8 @@ class Channel extends Component {
 
     componentDidMount() {
         new window.IScroll(this.div, {
-            bounce: false
+            bounce: false,
+            click: true
         });
     }
 
