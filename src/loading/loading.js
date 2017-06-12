@@ -6,7 +6,7 @@ class Loading extends Component {
         return (
             <div className="h100 df fdc jcc aic">
                 <div className="spinner" />
-                <span className={`${style.text} cfff`}>loading...</span>
+                <span className={`${style.text} cfff`}>拼命加载中...</span>
             </div>
         );
     }

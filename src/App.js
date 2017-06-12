@@ -16,12 +16,14 @@ class App extends Component {
     };
 
     componentDidMount() {
-        Promise.all(urls.map(url => fetch(url).then(response => response.json()))).then(json => {
+        Promise.all(urls.map(url => fetch(url).then(response => response.json()))).then(responseList => {
             this.setState({
                 isDataReady: true,
-                newestPageData: json[0].data,
-                channelPageData: json[1].data
+                newestPageData: responseList[0].data,
+                channelPageData: responseList[1].data
             });
+        }).catch(reason => {
+            console.log(reason);
         });
     }
 

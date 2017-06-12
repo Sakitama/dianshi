@@ -4,13 +4,22 @@ import menu from './menu.svg';
 import search from './search.svg';
 
 class Navigation extends Component {
-    slideTo = e => {
-        this.props.slideTo(e);
+    toUser = () => {
+        this.props.toUser();
     };
+
+    toSearch = () => {
+        this.props.toSearch();
+    };
+
+    slideTo = e => {
+        this.props.slideTo(Number(e.currentTarget.dataset.index));
+    };
+
     render() {
         return (
             <div className={`${style.navigation} df`}>
-                <div className={`${style.menu} ${style.btn} aic df`}>
+                <div onClick={this.toUser} className={`${style.menu} ${style.btn} aic df`}>
                     <img className={style.icon} src={menu} alt="menu-icon" />
                 </div>
                 <div data-index="0" onClick={this.slideTo} className={`${style.btn} aic df jcc`}>
@@ -19,7 +28,7 @@ class Navigation extends Component {
                 <div data-index="1" onClick={this.slideTo} className={`${style.btn} aic df jcc`}>
                     <span className={this.props.currentSlide === 1 ? "cfff" : "c808080"}>频道</span>
                 </div>
-                <div className={`${style.search} ${style.btn} aic df jcfe`}>
+                <div onClick={this.toSearch} className={`${style.search} ${style.btn} aic df jcfe`}>
                     <img className={style.icon} src={search} alt="search-icon" />
                 </div>
             </div>

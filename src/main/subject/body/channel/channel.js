@@ -90,6 +90,10 @@ const pictureList = [
 ];
 
 class Channel extends Component {
+    toDetail = e => {
+        this.props.toDetail(e.currentTarget.dataset.channelname);
+    };
+
     componentDidMount() {
         new window.IScroll(this.div, {
             bounce: false
@@ -105,9 +109,9 @@ class Channel extends Component {
                     backgroundImage: `url(${pictureList[i]})`
                 };
                 return (
-                    <li key={item.id} style={styleObj} className={`${style.item} cfff aic jcc df brnr bsc pr`}>
+                    <li data-channelName={item.name} onClick={this.toDetail} key={item.id} style={styleObj} className={`${style.item} cfff aic jcc df brnr bsc pr`}>
                         <div className="mask pa h100 w100" />
-                        <span className={`${style.text} fwb`}>{`# ${item.name} #`}</span>
+                        <span className={style.text}>{`# ${item.name} #`}</span>
                     </li>
                 );
             });

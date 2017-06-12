@@ -5,3 +5,7 @@
 :local .title, :local .desc {
     z-index: 0;
 }
+
+:local .desc {
+    font-size: 12px;
+}

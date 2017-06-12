@@ -6,7 +6,7 @@ import Item from './item/item';
 class Newest extends Component {
     componentDidMount() {
         new window.IScroll(this.div, {
-            probeType: 3
+            bounce: false
         });
     }
 

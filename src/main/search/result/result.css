@@ -1,0 +1,37 @@
+:local .result {
+    height: 92%;
+    background: #3a3a3a;
+}
+
+:local .count {
+    font-size: 12px;
+    color: #a6a6a6;
+    line-height: 50px;
+}
+
+:local .item {
+    height: 100px;
+    padding: 15px 15px 0 15px;
+}
+
+:local .item:first-child {
+    padding-top: 0;
+}
+
+:local .item:last-child {
+    padding-bottom: 15px;
+}
+
+:local .text {
+    margin-left: 15px;
+}
+
+:local .desc {
+    font-size: 12px;
+    margin-top: 15px;
+}
+
+:local .title {
+    font-size: 14px;
+    line-height: 16px;
+}
