@@ -15,12 +15,6 @@ class Result extends Component {
         });
     }
 
-/*    componentDidUpdate() {
-        setTimeout(() => {
-            this.resultIScroll.refresh();
-        }, 0);
-    }*/
-
     render() {
         let data = this.props.searchResult,
             styleObj = null,
