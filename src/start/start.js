@@ -4,6 +4,7 @@ import i1 from './1.jpg';
 import i2 from './2.jpg';
 import i3 from './3.jpg';
 import i4 from './4.jpg';
+import push from './push.png';
 
 const iList = [i1, i2, i3, i4];
 
@@ -15,9 +16,15 @@ class Start extends Component {
 
     componentDidMount() {
         this.timerID = setInterval(() => {
-            this.setState(prevState => ({
-                ratio: prevState.ratio + 0.001
-            }));
+            this.setState(prevState => {
+                if (prevState.ratio < 2) {
+                    return {
+                        ratio: prevState.ratio + 0.001
+                    }
+                } else {
+                    clearInterval(this.timerID);
+                }
+            });
         }, 17);
     }
 
@@ -31,10 +38,11 @@ class Start extends Component {
                 transform: `scale(${this.state.ratio})`
             };
         return (
-            <div className={`${style.start} h100 pr df aic jcc oh`}>
-                <div style={styleObj} className={`${style.start} pa w100 h100 brnr bsc`} />
+            <div className={`${style.start} h100 pr df fdc aic jcc oh`}>
+                <div style={styleObj} className="pa w100 h100 brnr bsc" />
                 <div className="mask pa w100 h100" />
-                <div className={`${style.logo} cfff`}>- 点视 -</div>
+                <img src={push} className={style.logo} alt="logo" />
+                <span className={`${style.text} cfff`}>想看啥，找点视</span>
             </div>
         );
     }

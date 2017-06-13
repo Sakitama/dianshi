@@ -1,0 +1,23 @@
+:local .history {
+    background: #202020;
+}
+
+:local .item {
+    line-height: 10px;
+    padding: 20px;
+    border-bottom: 1px solid #2e2e2e;
+    font-size: 12px;
+}
+
+:local .wrap {
+    margin-top: 20px;
+}
+
+:local .btn {
+    color: #a3a3a3;
+    line-height: 30px;
+    font-size: 12px;
+    background: #303030;
+    border-radius: 20px;
+    padding: 10px 30px;
+}

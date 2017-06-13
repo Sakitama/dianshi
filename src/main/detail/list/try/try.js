@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import style from './no.css';
+import style from './try.css';
 
-class No extends Component {
+class Try extends Component {
     click = () => {
         if (this.props.tryListFirstFetchData) {
             this.props.tryListFirstFetchData();
@@ -21,4 +21,4 @@ class No extends Component {
     }
 }
 
-export default No;
+export default Try;

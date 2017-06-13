@@ -110,7 +110,7 @@ class Channel extends Component {
                     backgroundImage: `url(${pictureList[i]})`
                 };
                 return (
-                    <li data-channelName={item.name} onClick={this.toDetail} key={item.id} style={styleObj} className={`${style.item} aic jcc df brnr bsc pr`}>
+                    <li data-channelName={item.name} onClick={this.toDetail} key={i} style={styleObj} className={`${style.item} aic jcc df brnr bsc pr`}>
                         <div className="mask pa h100 w100" />
                         <span className={`${style.text} cfff`}>{`# ${item.name} #`}</span>
                     </li>

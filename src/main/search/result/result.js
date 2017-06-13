@@ -18,12 +18,12 @@ class Result extends Component {
     render() {
         let data = this.props.searchResult,
             styleObj = null,
-            list = data.map(video => {
+            list = data.map((video, index) => {
                 styleObj = {
                     backgroundImage: `url(${video.img.slice(0, video.img.lastIndexOf('.'))}_170_100.jpg)`
                 };
                 return (
-                    <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={video.id} className={`${style.item} df`}>
+                    <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className={`${style.item} df`}>
                         <div style={styleObj} className={`${style.iwrap} brnr bsc`} />
                         <div className={`${style.text} df fdc jcc`}>
                             <span className={`${style.title} cfff`}>{video.title}</span>

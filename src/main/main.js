@@ -4,9 +4,9 @@ import Subject from './subject/subject';
 import Detail from './detail/detail';
 import Search from './search/search';
 
-const NONE = 0;
-const SEARCH = 1;
-const DETAIL = 2;
+const NONE = 1;
+const SEARCH = 2;
+const DETAIL = 3;
 
 class Main extends Component {
     state = {
@@ -53,7 +53,7 @@ class Main extends Component {
     };
 
     mainSwiperSlide = index => {
-        this.mainSwiper.slideTo(index, 50, false);
+        this.mainSwiper.slideTo(index, 200, false);
     };
 
     componentDidMount() {
