@@ -8,7 +8,7 @@ class Detail extends Component {
         return (
             <div className="h100">
                 <Head detailBackToMain={this.props.detailBackToMain} channelName={this.props.channelName} />
-                <List width={this.props.width} listPageData={this.props.listPageData} />
+                <List width={this.props.width} channelName={this.props.channelName} />
             </div>
         )
     }
