@@ -17,7 +17,7 @@ class Start extends Component {
     componentDidMount() {
         this.timerID = setInterval(() => {
             this.setState(prevState => {
-                if (prevState.ratio < 2) {
+                if (prevState.ratio < 1.5) {
                     return {
                         ratio: prevState.ratio + 0.001
                     }
@@ -38,11 +38,11 @@ class Start extends Component {
                 transform: `scale(${this.state.ratio})`
             };
         return (
-            <div className={`${style.start} h100 pr df fdc aic jcc oh`}>
+            <div className="h100 pr df fdc aic jcc oh">
                 <div style={styleObj} className="pa w100 h100 brnr bsc" />
                 <div className="mask pa w100 h100" />
                 <img src={push} className={style.logo} alt="logo" />
-                <span className={`${style.text} cfff`}>想看啥，找点视</span>
+                <span className={`${style.text} cfff pa`}>感悟人生只需一刻钟</span>
             </div>
         );
     }

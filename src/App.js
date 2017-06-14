@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import style from './App.css';
 import Main from './main/main';
 import Start from './start/start';
-import Try from './main/detail/list/try/try';
-import No from './main/detail/list/no/no';
+import Error from './main/detail/list/error/error';
 
 const LOADING = 1;
 const FAILED = 2;
@@ -59,9 +58,9 @@ class App extends Component {
         if (this.state.flag === LOADING) {
             content = <Start />
         } else if (this.state.flag === FAILED) {
-            content = <Try text="哎呀，网络有点不给力，点我帮您重新加载！" tryAppFetchData={this.tryAppFetchData} />
+            content = <Error shouldTry="yes" text="哎呀，网络有点不给力" tryAppFetchData={this.tryAppFetchData} />
         } else if (this.state.flag === NODATA) {
-            content = <No text="小点没有收到任何可用的数据，点我帮您重新加载！" tryAppFetchData={this.tryAppFetchData} />
+            content = <Error shouldTry="yes" text="小点没有收到任何可用的数据" tryAppFetchData={this.tryAppFetchData} />
         } else if (this.state.flag === COMPLETE) {
             content = <Main width={this.div.clientWidth} newestPageData={this.state.newestPageData} channelPageData={this.state.channelPageData} />;
         }

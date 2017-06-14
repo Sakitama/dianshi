@@ -3,9 +3,8 @@ import style from './search.css';
 import Bar from './bar/bar';
 import Result from './result/result';
 import Loading from '../../loading/loading';
-import Try from '../../main/detail/list/try/try';
-import No from '../../main/detail/list/no/no';
 import History from './history/history';
+import Error from "../detail/list/error/error";
 
 const INIT = 1;
 const SEARCHING = 2;
@@ -85,13 +84,13 @@ class Search extends Component {
         } else if (this.state.searchFlag === FAILED) {
             content = (
                 <div className={style.wrapper}>
-                    <Try text="哎呀，网络有点不给力，再试一次吧！" />
+                    <Error text="哎呀，网络有点不给力" />
                 </div>
             );
         } else if (this.state.searchFlag === NODATA) {
             content = (
                 <div className={style.wrapper}>
-                    <No text="小点没有收到任何可用的数据，再试一次吧！" />
+                    <Error text="小点没有收到任何可用的数据" />
                 </div>
             );
         } else if (this.state.searchFlag === INIT) {

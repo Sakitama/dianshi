@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import style from './list.css';
 import Loading from '../../../loading/loading';
-import No from './no/no';
-import Try from './try/try';
 import Item from '../../subject/body/newest/item/item';
+import Error from './error/error';
 
 const LOADING = 1;
 const FAILED = 2;
@@ -18,16 +17,19 @@ class List extends Component {
 
     isPulled = false;
 
-    pageNum = 1;
+    page = 1;
 
     isLoading = false;
 
+    total = 0;
+
     listFirstFetchData = () => {
-        fetch(encodeURI(`http://iface.qiyi.com/openapi/batch/channel?type=detail&channel_name=${this.props.channelName}&mode=11&is_purchase=2&page_size=${this.pageNum * 30}&version=7.5&app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=12&dev_os=10.3.1&dev_ua=iPhone9,3&dev_hw=%7B%22cpu%22%3A0%2C%22gpu%22%3A%22%22%2C%22mem%22%3A%2250.4MB%22%7D&net_sts=1&scrn_sts=1&scrn_res=1334*750&scrn_dpi=153600&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=iPhone&core=1&req_sn=1493946331320&req_times=1`))
+        fetch(encodeURI(`http://iface.qiyi.com/openapi/batch/channel?type=detail&channel_name=${this.props.channelName}&mode=11&is_purchase=2&page_size=30&page_num=${this.page}&version=7.5&app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=12&dev_os=10.3.1&dev_ua=iPhone9,3&dev_hw=%7B%22cpu%22%3A0%2C%22gpu%22%3A%22%22%2C%22mem%22%3A%2250.4MB%22%7D&net_sts=1&scrn_sts=1&scrn_res=1334*750&scrn_dpi=153600&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=iPhone&core=1&req_sn=1493946331320&req_times=1`))
             .then(response => response.json())
             .then(json => {
                 if (json.data && json.data.video_list && json.data.video_list.length > 0) {
-                    this.pageNum++;
+                    this.page++;
+                    this.total = json.data.total;
                     this.listIScroll = new window.IScroll(this.div, {
                         click: true,
                         probeType: 3
@@ -39,14 +41,14 @@ class List extends Component {
                         }
                     });
                     this.listIScroll.on('scrollEnd', () => {
-                        if (this.isPulled && !this.isLoading) {
+                        if (this.isPulled && !this.isLoading && (this.page <= Math.ceil(this.total / 30))) {
                             this.isLoading = true;
-                            fetch(encodeURI(`http://iface.qiyi.com/openapi/batch/channel?type=detail&channel_name=${this.props.channelName}&mode=11&is_purchase=2&page_size=${this.pageNum * 30}&version=7.5&app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=12&dev_os=10.3.1&dev_ua=iPhone9,3&dev_hw=%7B%22cpu%22%3A0%2C%22gpu%22%3A%22%22%2C%22mem%22%3A%2250.4MB%22%7D&net_sts=1&scrn_sts=1&scrn_res=1334*750&scrn_dpi=153600&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=iPhone&core=1&req_sn=1493946331320&req_times=1`)).then(response => response.json()).then(json => {
+                            fetch(encodeURI(`http://iface.qiyi.com/openapi/batch/channel?type=detail&channel_name=${this.props.channelName}&mode=11&is_purchase=2&page_size=30&page_num=${this.page}&version=7.5&app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=12&dev_os=10.3.1&dev_ua=iPhone9,3&dev_hw=%7B%22cpu%22%3A0%2C%22gpu%22%3A%22%22%2C%22mem%22%3A%2250.4MB%22%7D&net_sts=1&scrn_sts=1&scrn_res=1334*750&scrn_dpi=153600&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=iPhone&core=1&req_sn=1493946331320&req_times=1`)).then(response => response.json()).then(json => {
                                 if (json.data && json.data.video_list && json.data.video_list.length > 0) {
-                                    this.pageNum++;
-                                    this.setState({
-                                        listPageData: json
-                                    });
+                                    this.page++;
+                                    this.setState(prevState => ({
+                                        listPageData: prevState.listPageData.concat(json.data.video_list)
+                                    }));
                                 }
                                 this.isLoading = false;
                             }).catch(reason => {
@@ -57,7 +59,7 @@ class List extends Component {
                         }
                     });
                     this.setState({
-                        listPageData: json,
+                        listPageData: json.data.video_list,
                         flag: COMPLETE
                     });
                 } else {
@@ -103,11 +105,11 @@ class List extends Component {
         } else if (this.state.flag === FAILED) {
             content = (
                 <div className="h100">
-                    <Try text="哎呀，网络有点不给力，点我帮您重新加载！" tryListFirstFetchData={this.tryListFirstFetchData} />
+                    <Error shouldTry="yes" text="哎呀，网络有点不给力" tryListFirstFetchData={this.tryListFirstFetchData} />
                 </div>
             );
         } else if (this.state.flag === COMPLETE) {
-            let data = this.state.listPageData.data.video_list;
+            let data = this.state.listPageData;
             content = (
                 <div>
                     <ul>
@@ -118,7 +120,7 @@ class List extends Component {
         } else if (this.state.flag === NODATA) {
             content = (
                 <div className="h100">
-                    <No text="小点没有收到任何可用的数据，点我帮您重新加载！" tryListFirstFetchData={this.tryListFirstFetchData} />
+                    <Error shouldTry="yes" text="小点没有收到任何可用的数据" tryListFirstFetchData={this.tryListFirstFetchData} />
                 </div>
             );
         }

@@ -1,5 +1,6 @@
 :local .item {
     width: 50%;
+    background-size: contain;
 }
 
 :local .text {

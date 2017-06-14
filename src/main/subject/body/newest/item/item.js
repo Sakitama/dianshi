@@ -15,11 +15,11 @@ class Item extends Component {
             <ul>
                 {videoList.map((video, index) => {
                     styleObj = {
-                        height: `${9 * this.props.width / 16}px`,
-                        backgroundImage: `url(${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg)`
+                        height: `${9 * this.props.width / 16}px`
                     };
                     return (
-                        <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} style={styleObj} key={index} className="pr brnr bsc">
+                        <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} style={styleObj} key={index} className="pr">
+                            <img className="pa w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg`} alt={video.short_title} />
                             <div className="mask pa h100 w100" />
                             <span className={`${style.title} cfff pa`}>{video.title}</span>
                             <span className={`${style.desc} cfff pa`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>

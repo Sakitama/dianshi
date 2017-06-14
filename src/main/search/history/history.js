@@ -6,17 +6,28 @@ class History extends Component {
         this.props.startSearch(e.currentTarget.dataset.value);
     };
 
+    componentDidMount() {
+        new window.IScroll(this.div, {
+            click: true,
+            bounce: false
+        });
+    }
+
     render() {
         let list = this.props.list.map((item, index) => (
             <li data-value={item} onClick={this.startSearch} className={`${style.item} cfff`} key={index}>{item}</li>
         ));
         return (
-            <div className={`${style.history} h100`}>
-                <ul>
-                    {list}
-                </ul>
-                <div className={`${style.wrap} tac`}>
-                    <span onClick={this.props.clearLocalStorage} className={style.btn}>清空历史记录</span>
+            <div ref={div => {
+                this.div = div;
+            }} className={`${style.history} h100 oh`}>
+                <div>
+                    <ul>
+                        {list}
+                    </ul>
+                    <div className={`${style.wrap} tac`}>
+                        <span onClick={this.props.clearLocalStorage} className={style.btn}>清空历史记录</span>
+                    </div>
                 </div>
             </div>
         );

@@ -106,12 +106,12 @@ class Channel extends Component {
             data = this.props.channelPageData,
             content = data.map((item, i) => {
                 styleObj = {
-                    height: `${this.props.width / 2}px`,
-                    backgroundImage: `url(${pictureList[i]})`
+                    height: `${this.props.width / 2}px`
                 };
                 return (
-                    <li data-channelName={item.name} onClick={this.toDetail} key={i} style={styleObj} className={`${style.item} aic jcc df brnr bsc pr`}>
-                        <div className="mask pa h100 w100" />
+                    <li data-channelName={item.name} onClick={this.toDetail} key={i} style={styleObj} className={`${style.item} aic jcc df pr`}>
+                        <img className="pa w100 h100" src={pictureList[i]} alt={item.name} />
+                        <div className="mask pa w100 h100" />
                         <span className={`${style.text} cfff`}>{`# ${item.name} #`}</span>
                     </li>
                 );
