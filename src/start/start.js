@@ -3,8 +3,8 @@ import style from './start.css';
 import i1 from './1.jpg';
 import i2 from './2.jpg';
 import i3 from './3.jpg';
-import i4 from './4.jpg';
-import push from './push.png';
+import i4 from './4.png';
+import logo from './logo.png';
 
 const iList = [i1, i2, i3, i4];
 
@@ -34,14 +34,13 @@ class Start extends Component {
 
     render() {
         let styleObj = {
-                backgroundImage: `url(${iList[this.state.index]})`,
                 transform: `scale(${this.state.ratio})`
             };
         return (
             <div className="h100 pr df fdc aic jcc oh">
-                <div style={styleObj} className="pa w100 h100 brnr bsc" />
+                <img style={styleObj} className="pa w100" src={iList[this.state.index]} alt="start" />
                 <div className="mask pa w100 h100" />
-                <img src={push} className={style.logo} alt="logo" />
+                <img src={logo} className={style.logo} alt="logo" />
                 <span className={`${style.text} cfff pa`}>感悟人生只需一刻钟</span>
             </div>
         );

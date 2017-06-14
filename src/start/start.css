@@ -1,6 +1,7 @@
 :local .logo {
     z-index: 0;
-    margin-top: -200px;
+    margin-top: -300px;
+    width: 100px;
 }
 
 :local .text {
