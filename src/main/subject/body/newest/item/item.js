@@ -9,11 +9,17 @@ class Item extends Component {
     };
 
     render() {
-        let videoList = this.props.videoList,
+        let str = '',
+            videoList = this.props.videoList,
             styleObj = null;
         return (
             <ul>
                 {videoList.map((video, index) => {
+                    if (!video.sns_score) {
+                        str = '';
+                    } else {
+                        str = ` / 评分 ${video.sns_score}`;
+                    }
                     styleObj = {
                         height: `${9 * this.props.width / 16}px`
                     };
@@ -22,7 +28,7 @@ class Item extends Component {
                             <img className="pa w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg`} alt={video.short_title} />
                             <div className="mask pa h100 w100" />
                             <span className={`${style.title} cfff pa`}>{video.title}</span>
-                            <span className={`${style.desc} cfff pa`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>
+                            <span className={`${style.desc} cfff pa`}>{`播放量 ${video.play_count_text}${str}`}</span>
                         </li>
                     )
                 })}
