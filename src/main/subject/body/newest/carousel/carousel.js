@@ -23,17 +23,23 @@ class Carousel extends Component {
                 height: `${79 * this.props.width / 160}px`
             },
             content = this.props.data.video_list.map((video, index) => {
-                if (!video.sns_score) {
-                    str = '';
-                } else {
-                    str = ` / 评分 ${video.sns_score}`;
+                str = '';
+                if (video.sns_score) {
+                    str += ` | 评分${video.sns_score}`;
+                }
+                if (Number(video.total_num) > 1) {
+                    if (Number(video.total_num) === Number(video.update_num)) {
+                        str += ` | 全${video.total_num}集`;
+                    } else {
+                        str += ` | 更新至${video.update_num}集 / 共${video.total_num}集`;
+                    }
                 }
                 return (
                     <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className="swiper-slide pr df jcc aic fdc">
                         <img className="pa w100 h100" src={video.img} alt={video.short_title} />
                         <div className="mask pa h100 w100" />
                         <span className={`${style.title} cfff fwb tac`}>{video.title}</span>
-                        <span className={`${style.desc} cfff`}>{`播放量 ${video.play_count_text}${str}`}</span>
+                        <span className={`${style.desc} cfff`}>{`已有${video.play_count_text}人观看${str}`}</span>
                     </div>
                 );
             });

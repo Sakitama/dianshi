@@ -15,10 +15,16 @@ class Item extends Component {
         return (
             <ul>
                 {videoList.map((video, index) => {
-                    if (!video.sns_score) {
-                        str = '';
-                    } else {
-                        str = ` / 评分 ${video.sns_score}`;
+                    str = '';
+                    if (video.sns_score) {
+                        str += ` | 评分${video.sns_score}`;
+                    }
+                    if (Number(video.total_num) > 1) {
+                        if (Number(video.total_num) === Number(video.update_num)) {
+                            str += ` | 全${video.total_num}集`;
+                        } else {
+                            str += ` | 更新至${video.update_num}集 / 共${video.total_num}集`;
+                        }
                     }
                     styleObj = {
                         height: `${9 * this.props.width / 16}px`
@@ -28,7 +34,7 @@ class Item extends Component {
                             <img className="pa w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg`} alt={video.short_title} />
                             <div className="mask pa h100 w100" />
                             <span className={`${style.title} cfff pa`}>{video.title}</span>
-                            <span className={`${style.desc} cfff pa`}>{`播放量 ${video.play_count_text}${str}`}</span>
+                            <span className={`${style.desc} cfff pa`}>{`已有${video.play_count_text}人观看${str}`}</span>
                         </li>
                     )
                 })}
