@@ -35,11 +35,11 @@ class Carousel extends Component {
                     }
                 }
                 return (
-                    <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className="swiper-slide pr df jcc aic fdc">
+                    <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className="swiper-slide pr df jcc tac fdc">
                         <img className="pa w100 h100" src={video.img} alt={video.short_title} />
                         <div className="mask pa h100 w100" />
-                        <span className={`${style.title} cfff fwb tac`}>{video.title}</span>
-                        <span className={`${style.desc} cfff`}>{`已有${video.play_count_text}人观看${str}`}</span>
+                        <span className={`${style.title} cfff wbba`}>{video.title}</span>
+                        <span className={`${style.desc} cfff wbba`}>{`已有${video.play_count_text}人观看${str}`}</span>
                     </div>
                 );
             });

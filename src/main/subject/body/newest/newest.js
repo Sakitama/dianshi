@@ -17,7 +17,9 @@ class Newest extends Component {
         for (let i = 1; i < data.length; i++) {
             list.push((
                 <li key={data[i].channel_id}>
-                    <h1 className={`${style.type} cfff tac`}>{`- ${data[i].channel_name} -`}</h1>
+                    <div className={`${style.type} tac`}>
+                        <span className={`${style.text} cfff`}>{`- ${data[i].channel_name} -`}</span>
+                    </div>
                     <Item width={this.props.width} videoList={data[i].video_list} />
                 </li>
             ));

@@ -1,4 +1,8 @@
 :local .type {
-    line-height: 40px;
-    font-size: 14px;
+    padding: 12px;
+}
+
+:local .text {
+    font-size: 12px;
+    line-height: 14px;
 }

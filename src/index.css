@@ -61,16 +61,16 @@ html, body, #root {
     text-align: center;
 }
 
-.fwb {
-    font-weight: bold;
-}
-
 .brnr {
     background-repeat: no-repeat;
 }
 
 .bsc {
     background-size: cover;
+}
+
+.wbba {
+    word-break: break-all;
 }
 
 .mask {

@@ -15,7 +15,9 @@ class History extends Component {
 
     render() {
         let list = this.props.list.map((item, index) => (
-            <li data-value={item} onClick={this.startSearch} className={`${style.item} cfff`} key={index}>{item}</li>
+            <li data-value={item} onClick={this.startSearch} className={style.item} key={index}>
+                <span className={`${style.text} cfff wbba`}>{item}</span>
+            </li>
         ));
         return (
             <div ref={div => {

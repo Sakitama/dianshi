@@ -1,0 +1,21 @@
+:local .loading {
+    height: 50px;
+}
+
+:local .wrapper {
+    width: 24px;
+    height: 24px;
+}
+
+.rotate {
+    animation: loading 2s infinite linear;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

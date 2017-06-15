@@ -8,7 +8,8 @@
 }
 
 :local .try {
-    color: #626262;
+    color: #555;
+    font-size: 12px;
 }
 
 :local .circle {

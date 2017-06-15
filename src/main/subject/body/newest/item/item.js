@@ -30,11 +30,11 @@ class Item extends Component {
                         height: `${9 * this.props.width / 16}px`
                     };
                     return (
-                        <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} style={styleObj} key={index} className="pr">
+                        <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} style={styleObj} key={index} className="df fdc jcfe pr">
                             <img className="pa w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg`} alt={video.short_title} />
                             <div className="mask pa h100 w100" />
-                            <span className={`${style.title} cfff pa`}>{video.title}</span>
-                            <span className={`${style.desc} cfff pa`}>{`已有${video.play_count_text}人观看${str}`}</span>
+                            <span className={`${style.title} cfff`}>{video.title}</span>
+                            <span className={`${style.desc} cfff`}>{`已有${video.play_count_text}人观看${str}`}</span>
                         </li>
                     )
                 })}
