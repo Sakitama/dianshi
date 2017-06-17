@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import img from './01.png';
+import networkError from './network-error.png';
+import noData from './no-data.png';
+import noViewHistory from './no-view-history.png';
 import circle from './circle.svg';
 
 class Error extends Component {
@@ -14,11 +16,21 @@ class Error extends Component {
     };
 
     render() {
+        let img = null;
+        if (this.props.networkError === 'yes') {
+            img = networkError;
+        } else if (this.props.noData === 'yes') {
+            img = noData;
+        } else if (this.props.noViewHistory === 'yes') {
+            img = noViewHistory;
+        }
         return (
             <div style={{
                 backgroundColor: '#DAD9D7'
             }} className="h100 df fdc jcc aic">
-                <img src={img} alt="failed" />
+                <img style={{
+                    width: '200px'
+                }} src={img} alt="something wrong" />
                 <span style={{
                     margin: '20px 0',
                     color: '#555'

@@ -25,11 +25,11 @@ class Navigation extends Component {
                 <div onClick={this.showMore} className={`${style.menu} ${style.btn} df aic`}>
                     <img className={style.icon} src={menu} alt="menu-icon" />
                 </div>
-                <div data-index="0" onClick={this.slideTo} className={`${style.btn} df jcc aic`}>
-                    <span className={this.props.currentSlide === 0 ? "cfff" : "c808080"}>最新</span>
+                <div data-index="0" onClick={this.slideTo} className={`${style.btn} ${style.border} df jcc aic ${this.props.currentSlide === 0 ? style.active : 'c808080'}`}>
+                    <span>最新</span>
                 </div>
-                <div data-index="1" onClick={this.slideTo} className={`${style.btn} df jcc aic`}>
-                    <span className={this.props.currentSlide === 1 ? "cfff" : "c808080"}>频道</span>
+                <div data-index="1" onClick={this.slideTo} className={`${style.btn} ${style.border} df jcc aic ${this.props.currentSlide === 1 ? style.active : 'c808080'}`}>
+                    <span>频道</span>
                 </div>
                 <div onClick={this.toSearch} className={`${style.search} ${style.btn} df aic jcfe`}>
                     <img className={style.icon} src={search} alt="search-icon" />

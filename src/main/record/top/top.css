@@ -1,0 +1,11 @@
+:local .btn {
+    flex: 1;
+}
+
+:local .icon {
+    width: 2em;
+}
+
+:local .menu {
+    padding-left: 1em;
+}

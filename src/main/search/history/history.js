@@ -13,8 +13,7 @@ class History extends Component {
     }
 
     render() {
-        let width = document.body.clientWidth || document.documentElement.clientWidth,
-            list = this.props.list.map((item, index) => (
+        let list = this.props.list.map((item, index) => (
                 <li data-value={item} onClick={this.startSearch} style={{
                     padding: '15px 20px',
                     borderBottom: '1px solid #2e2e2e'

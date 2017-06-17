@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 
 class Item extends Component {
     callNative = e => {
-        let aid = e.currentTarget.dataset.aid;
-        let tvid = e.currentTarget.dataset.tvid;
-        window.location.href = 'iqiyi://mobile/player?aid=' + aid + '&tvid=' + tvid + '&ftype=27&to=3&url=' + encodeURIComponent(window.location.href);
+        window.util.callNative(e);
     };
 
     render() {
@@ -30,7 +28,7 @@ class Item extends Component {
                         height: `${9 * width / 16}px`
                     };
                     return (
-                        <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} style={styleObj} key={index} className="df fdc jcfe pr">
+                        <li onClick={this.callNative} data-video={window.JSON.stringify(video)} data-aid={video.a_id} data-tvid={video.tv_id} style={styleObj} key={index} className="df fdc jcfe pr">
                             <img className="pa w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg`} alt={video.short_title} />
                             <div className="mask pa h100 w100" />
                             <span style={{

@@ -25,4 +25,5 @@
 
 :local .active {
     background-color: #26262b;
+    border-left: 5px solid #fff;
 }

@@ -3,9 +3,7 @@ import style from './result.css';
 
 class Result extends Component {
     callNative = e => {
-        let aid = e.currentTarget.dataset.aid;
-        let tvid = e.currentTarget.dataset.tvid;
-        window.location.href = 'iqiyi://mobile/player?aid=' + aid + '&tvid=' + tvid + '&ftype=27&to=3&url=' + encodeURIComponent(window.location.href);
+        window.util.callNative(e);
     };
 
     componentDidMount() {
@@ -19,7 +17,7 @@ class Result extends Component {
         let data = this.props.searchResult,
             list = data.map((video, index) => {
                 return (
-                    <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className={`${style.item} df aic`}>
+                    <li onClick={this.callNative} data-video={window.JSON.stringify(video)} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className={`${style.item} df aic`}>
                         <div className={style.iwrap}>
                             <img className="w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_170_100.jpg`} alt={video.short_title} />
                         </div>

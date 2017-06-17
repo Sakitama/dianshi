@@ -109,7 +109,7 @@ class List extends Component {
         } else if (this.state.flag === FAILED) {
             content = (
                 <div className="h100">
-                    <Error shouldTry="yes" text="哎呀，网络有点不给力" tryListFirstFetchData={this.tryListFirstFetchData} />
+                    <Error networkError="yes" shouldTry="yes" text="哎呀，网络有点不给力" tryListFirstFetchData={this.tryListFirstFetchData} />
                 </div>
             );
         } else if (this.state.flag === COMPLETE) {
@@ -127,7 +127,7 @@ class List extends Component {
         } else if (this.state.flag === NODATA) {
             content = (
                 <div className="h100">
-                    <Error shouldTry="yes" text="小点没有收到任何可用的数据" tryListFirstFetchData={this.tryListFirstFetchData} />
+                    <Error noData="yes" shouldTry="yes" text="小点没有收到任何可用的数据" tryListFirstFetchData={this.tryListFirstFetchData} />
                 </div>
             );
         }

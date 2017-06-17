@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 
 class Carousel extends Component {
     callNative = e => {
-        let aid = e.currentTarget.dataset.aid;
-        let tvid = e.currentTarget.dataset.tvid;
-        window.location.href = `iqiyi://mobile/player?aid='${aid}'&tvid='${tvid}'&ftype=27&to=3&url='${encodeURIComponent(window.location.href)}`;
+        window.util.callNative(e);
     };
 
     componentDidMount() {
@@ -35,7 +33,7 @@ class Carousel extends Component {
                     }
                 }
                 return (
-                    <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className="swiper-slide pr df fdc jcc tac">
+                    <div onClick={this.callNative} data-video={window.JSON.stringify(video)} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className="swiper-slide pr df fdc jcc tac">
                         <img className="pa w100 h100" src={video.img} alt={video.short_title} />
                         <div className="mask pa h100 w100" />
                         <span style={{

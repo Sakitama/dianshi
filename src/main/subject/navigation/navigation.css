@@ -2,6 +2,15 @@
     flex: 1;
 }
 
+:local .border {
+    border-bottom: 3px solid #010101;
+}
+
+:local .active {
+    color: #fff;
+    border-color: #fff;
+}
+
 :local .icon {
     width: 2em;
 }

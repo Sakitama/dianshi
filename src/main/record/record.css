@@ -1,0 +1,28 @@
+:local .item {
+    padding: 15px 15px 0 15px;
+}
+
+:local .item:last-child {
+    padding-bottom: 15px;
+}
+
+:local .iwrap {
+    flex-basis: 170px;
+    height: 100px;
+}
+
+:local .text {
+    margin-left: 15px;
+    flex: 1;
+}
+
+:local .desc {
+    font-size: 12px;
+    margin-top: 15px;
+    line-height: 14px;
+}
+
+:local .title {
+    font-size: 14px;
+    line-height: 16px;
+}

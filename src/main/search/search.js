@@ -87,7 +87,7 @@ class Search extends Component {
                 <div style={{
                     height: '92%'
                 }}>
-                    <Error text="哎呀，网络有点不给力" />
+                    <Error networkError="yes" text="哎呀，网络有点不给力" />
                 </div>
             );
         } else if (this.state.searchFlag === NODATA) {
@@ -95,7 +95,7 @@ class Search extends Component {
                 <div style={{
                     height: '92%'
                 }}>
-                    <Error text="小点没有收到任何可用的数据" />
+                    <Error noData="yes" text="小点没有收到任何可用的数据" />
                 </div>
             );
         } else if (this.state.searchFlag === INIT) {

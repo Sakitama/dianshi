@@ -15,8 +15,16 @@ class More extends Component {
     };
 
     clickTo = e => {
+        let to = e.currentTarget.dataset.to;
+        if (to === 'index') {
+            this.props.leftBackToMain();
+        } else if (to === 'record') {
+            this.props.toRecord();
+        } else if (to === 'find') {
+            this.props.toFind();
+        }
         this.setState({
-            current: e.currentTarget.dataset.to
+            current: to
         });
     };
 

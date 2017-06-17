@@ -3,35 +3,42 @@ import Subject from './subject/subject';
 import Detail from './detail/detail';
 import Search from './search/search';
 import More from './more/more';
+import Record from './record/record';
 
 const NONE = 1;
 const SEARCH = 2;
 const DETAIL = 3;
+const RECORD = 4;
+const FIND = 5;
 
 class Main extends Component {
     state = {
         channelName: '',
         flag: NONE,
+        leftFlag: NONE,
         showMore: false
     };
 
     searchBackToMain = () => {
-        this.slideToMain();
+        this.mainSwiperSlide(1);
         this.setState({
             flag: NONE
         });
     };
 
     detailBackToMain = () => {
-        this.slideToMain();
+        this.mainSwiperSlide(1);
         this.setState({
             channelName: '',
             flag: NONE
         });
     };
 
-    slideToMain = () => {
+    leftBackToMain = () => {
         this.mainSwiperSlide(1);
+        this.setState({
+            leftFlag: NONE
+        });
     };
 
     showMore = () => {
@@ -43,6 +50,20 @@ class Main extends Component {
     hiddenMore = () => {
         this.setState({
             showMore: false
+        });
+    };
+
+    toRecord = () => {
+        this.mainSwiperSlide(0);
+        this.setState({
+            leftFlag: RECORD
+        });
+    };
+
+    toFind = () => {
+        this.mainSwiperSlide(0);
+        this.setState({
+            leftFlag: FIND
         });
     };
 
@@ -73,7 +94,8 @@ class Main extends Component {
     }
 
     render() {
-        let content = null;
+        let content = null,
+            leftContent = null;
         if (this.state.flag === SEARCH) {
             content = <Search searchBackToMain={this.searchBackToMain} />;
         } else if (this.state.flag === DETAIL) {
@@ -81,11 +103,18 @@ class Main extends Component {
         } else if (this.state.flag === NONE) {
             content = null;
         }
+        if (this.state.leftFlag === RECORD) {
+            leftContent = <Record showMore={this.showMore} />;
+        } else if (this.state.leftFlag === FIND) {
+            leftContent = 2;
+        } else if (this.state.leftFlag === NONE) {
+            leftContent = null;
+        }
         return (
             <div className="h100 pr">
                 <div className="main-swiper swiper-container h100">
                     <div className="swiper-wrapper">
-                        <div className="swiper-slide">User</div>
+                        <div className="swiper-slide">{leftContent}</div>
                         <div className="swiper-slide">
                             <Subject toDetail={this.toDetail} toSearch={this.toSearch} showMore={this.showMore} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
                         </div>
@@ -94,7 +123,7 @@ class Main extends Component {
                         </div>
                     </div>
                 </div>
-                <More hiddenMore={this.hiddenMore} showMore={this.state.showMore} />
+                <More toRecord={this.toRecord} toFind={this.toFind} leftBackToMain={this.leftBackToMain} hiddenMore={this.hiddenMore} showMore={this.state.showMore} />
             </div>
         )
     }
