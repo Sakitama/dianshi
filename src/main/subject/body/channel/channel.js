@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import style from './channel.css';
 
 import movie from './movie.jpg';
 import series from './series.jpg';
@@ -102,17 +101,19 @@ class Channel extends Component {
     }
 
     render() {
-        let styleObj = null,
+        let width = document.body.clientWidth || document.documentElement.clientWidth,
             data = this.props.channelPageData,
             content = data.map((item, i) => {
-                styleObj = {
-                    height: `${this.props.width / 2}px`
-                };
                 return (
-                    <li data-channelName={item.name} onClick={this.toDetail} key={i} style={styleObj} className={`${style.item} aic jcc df pr`}>
+                    <li data-channelName={item.name} onClick={this.toDetail} key={i} style={{
+                        width: '50%',
+                        height: `${width / 2}px`
+                    }} className="df jcc aic pr">
                         <img className="pa w100 h100" src={pictureList[i]} alt={item.name} />
                         <div className="mask pa w100 h100" />
-                        <span className={`${style.text} cfff`}>{`# ${item.name} #`}</span>
+                        <span style={{
+                            zIndex: '0'
+                        }} className="cfff">{`# ${item.name} #`}</span>
                     </li>
                 );
             });
@@ -120,9 +121,11 @@ class Channel extends Component {
             <div ref={div => {
                 this.div = div;
             }} className="h100 oh">
-                <ul className="fww df">
-                    {content}
-                </ul>
+                <div>
+                    <ul className="fww df">
+                        {content}
+                    </ul>
+                </div>
             </div>
         );
     }

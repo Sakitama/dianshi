@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Navigation from './navigation/navigation';
 import Body from './body/body';
-import './subject.css';
 
 class Subject extends Component {
     state = {
@@ -28,8 +27,8 @@ class Subject extends Component {
     render() {
         return (
             <div className="h100">
-                <Navigation toSearch={this.props.toSearch} toUser={this.props.toUser} currentSlide={this.state.currentSlide} slideTo={this.slideTo} />
-                <Body toDetail={this.props.toDetail} mainSwiperSlide={this.props.mainSwiperSlide} slideTag={this.slideTag} getSwiper={this.getSwiper} width={this.props.width} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
+                <Navigation toSearch={this.props.toSearch} showMore={this.props.showMore} currentSlide={this.state.currentSlide} slideTo={this.slideTo} />
+                <Body toDetail={this.props.toDetail} slideTag={this.slideTag} getSwiper={this.getSwiper} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
             </div>
         )
     }

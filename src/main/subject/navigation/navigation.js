@@ -4,8 +4,8 @@ import menu from './menu.svg';
 import search from './search.svg';
 
 class Navigation extends Component {
-    toUser = () => {
-        this.props.toUser();
+    showMore = () => {
+        this.props.showMore();
     };
 
     toSearch = () => {
@@ -18,17 +18,20 @@ class Navigation extends Component {
 
     render() {
         return (
-            <div className={`${style.navigation} df`}>
-                <div onClick={this.toUser} className={`${style.menu} ${style.btn} aic df`}>
+            <div style={{
+                fontSize: '12px',
+                height: '8%'
+            }} className="df">
+                <div onClick={this.showMore} className={`${style.menu} ${style.btn} df aic`}>
                     <img className={style.icon} src={menu} alt="menu-icon" />
                 </div>
-                <div data-index="0" onClick={this.slideTo} className={`${style.btn} aic df jcc`}>
+                <div data-index="0" onClick={this.slideTo} className={`${style.btn} df jcc aic`}>
                     <span className={this.props.currentSlide === 0 ? "cfff" : "c808080"}>最新</span>
                 </div>
-                <div data-index="1" onClick={this.slideTo} className={`${style.btn} aic df jcc`}>
+                <div data-index="1" onClick={this.slideTo} className={`${style.btn} df jcc aic`}>
                     <span className={this.props.currentSlide === 1 ? "cfff" : "c808080"}>频道</span>
                 </div>
-                <div onClick={this.toSearch} className={`${style.search} ${style.btn} aic df jcfe`}>
+                <div onClick={this.toSearch} className={`${style.search} ${style.btn} df aic jcfe`}>
                     <img className={style.icon} src={search} alt="search-icon" />
                 </div>
             </div>

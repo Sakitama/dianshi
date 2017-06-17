@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import style from './head.css';
 import arrow from './arrow.svg';
 
 class Head extends Component {
@@ -9,14 +8,26 @@ class Head extends Component {
 
     render() {
         return (
-            <div className={`${style.head} df`}>
-                <div onClick={this.detailBackToMain} className={`${style.arrow} ${style.btn} aic df`}>
-                    <img className={style.icon} src={arrow} alt="arrow-icon" />
+            <div style={{
+                fontSize: '12px',
+                height: '8%'
+            }} className="df">
+                <div onClick={this.detailBackToMain} style={{
+                    paddingLeft: '1em',
+                    flex: '1'
+                }} className="df aic">
+                    <img style={{
+                        width: '2em'
+                    }} src={arrow} alt="arrow-icon" />
                 </div>
-                <div className={`${style.btn} aic df jcc`}>
+                <div style={{
+                    flex: '1'
+                }} className="df jcc aic">
                     <span className="cfff">{this.props.channelName}</span>
                 </div>
-                <div className={style.btn} />
+                <div style={{
+                    flex: '1'
+                }} />
             </div>
         );
     }

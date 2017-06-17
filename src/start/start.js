@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import style from './start.css';
 import i1 from './1.jpg';
 import i2 from './2.jpg';
 import i3 from './3.jpg';
@@ -37,11 +36,17 @@ class Start extends Component {
                 transform: `scale(${this.state.ratio})`
             };
         return (
-            <div className="h100 pr df fdc aic jcc oh">
+            <div className="h100 pr df fdc jcc aic oh">
                 <img style={styleObj} className="pa w100" src={iList[this.state.index]} alt="start" />
                 <div className="mask pa w100 h100" />
-                <img src={logo} className={style.logo} alt="logo" />
-                <span className={`${style.text} cfff pa`}>感悟人生只需一刻钟</span>
+                <img style={{
+                    marginBottom: '300px',
+                    width: '100px',
+                    zIndex: '0'
+                }} src={logo} alt="logo" />
+                <span style={{
+                    zIndex: '0'
+                }} className="cfff">感悟人生只需一刻钟</span>
             </div>
         );
     }

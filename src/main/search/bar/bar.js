@@ -26,8 +26,8 @@ class Bar extends Component {
                     }} className={`${style.input} cfff`} placeholder="请输入要搜索的内容" type="text" />
                     <img onClick={this.reset} className={style.cicon} src={cross} alt="cross-icon" />
                 </div>
-                <span onClick={this.startSearch} className={style.sbtn}>搜索</span>
-                <span onClick={this.searchBackToMain} className={style.cbtn}>取消</span>
+                <span className={style.sbtn} onClick={this.startSearch}>搜索</span>
+                <span className={style.cbtn} onClick={this.searchBackToMain}>取消</span>
             </div>
         );
     }

@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Newest from './newest/newest';
 import Channel from './channel/channel';
-import './body.css';
 
 class Body extends Component {
     componentDidMount() {
@@ -20,10 +19,10 @@ class Body extends Component {
             <div className="App-swiper swiper-container">
                 <div className="swiper-wrapper">
                     <div className="swiper-slide">
-                        <Newest width={this.props.width} newestPageData={this.props.newestPageData} />
+                        <Newest newestPageData={this.props.newestPageData} />
                     </div>
                     <div className="swiper-slide">
-                        <Channel toDetail={this.props.toDetail} width={this.props.width} channelPageData={this.props.channelPageData} />
+                        <Channel toDetail={this.props.toDetail} channelPageData={this.props.channelPageData} />
                     </div>
                 </div>
             </div>

@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import style from './carousel.css';
 
 class Carousel extends Component {
     callNative = e => {
         let aid = e.currentTarget.dataset.aid;
         let tvid = e.currentTarget.dataset.tvid;
-        window.location.href = 'iqiyi://mobile/player?aid=' + aid + '&tvid=' + tvid + '&ftype=27&to=3&url=' + encodeURIComponent(window.location.href);
+        window.location.href = `iqiyi://mobile/player?aid='${aid}'&tvid='${tvid}'&ftype=27&to=3&url='${encodeURIComponent(window.location.href)}`;
     };
 
     componentDidMount() {
@@ -19,8 +18,9 @@ class Carousel extends Component {
     }
     render() {
         let str = '',
+            width = document.body.clientWidth || document.documentElement.clientWidth,
             styleHeight = {
-                height: `${79 * this.props.width / 160}px`
+                height: `${79 * width / 160}px`
             },
             content = this.props.data.video_list.map((video, index) => {
                 str = '';
@@ -35,11 +35,21 @@ class Carousel extends Component {
                     }
                 }
                 return (
-                    <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className="swiper-slide pr df jcc tac fdc">
+                    <div onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className="swiper-slide pr df fdc jcc tac">
                         <img className="pa w100 h100" src={video.img} alt={video.short_title} />
                         <div className="mask pa h100 w100" />
-                        <span className={`${style.title} cfff wbba`}>{video.title}</span>
-                        <span className={`${style.desc} cfff wbba`}>{`已有${video.play_count_text}人观看${str}`}</span>
+                        <span style={{
+                            lineHeight: '18px',
+                            marginBottom: '20px',
+                            padding: '0 12px',
+                            zIndex: '0'
+                        }} className="cfff wbba">{video.title}</span>
+                        <span style={{
+                            fontSize: `12px`,
+                            lineHeight: `14px`,
+                            padding: `0 12px`,
+                            zIndex: '0'
+                        }} className="cfff wbba">{`已有${video.play_count_text}人观看${str}`}</span>
                     </div>
                 );
             });

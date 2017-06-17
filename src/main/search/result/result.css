@@ -3,10 +3,6 @@
     background: #202020;
 }
 
-:local .count {
-    padding: 15px;
-}
-
 :local .pre {
     font-size: 12px;
     line-height: 14px;

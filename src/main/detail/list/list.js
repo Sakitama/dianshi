@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import style from './list.css';
 import Loading from '../../../loading/loading';
 import Item from '../../subject/body/newest/item/item';
 import Error from './error/error';
@@ -118,7 +117,7 @@ class List extends Component {
             content = (
                 <div>
                     <ul>
-                        <Item width={this.props.width} videoList={data} />
+                        <Item videoList={data} />
                     </ul>
                     {this.state.loadingBlock ? (
                         <Hot />
@@ -135,7 +134,9 @@ class List extends Component {
         return (
             <div ref={div => {
                 this.div = div;
-            }} className={`${style.list} oh`}>
+            }} style={{
+                height: '92%'
+            }} className="oh">
                 {content}
             </div>
         )

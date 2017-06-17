@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import style from './search.css';
 import Bar from './bar/bar';
 import Result from './result/result';
 import Loading from '../../loading/loading';
@@ -75,7 +74,9 @@ class Search extends Component {
         let content = null;
         if (this.state.searchFlag === SEARCHING) {
             content = (
-                <div className={style.wrapper}>
+                <div style={{
+                    height: '92%'
+                }}>
                     <Loading />
                 </div>
             );
@@ -83,13 +84,17 @@ class Search extends Component {
             content = <Result searchResult={this.state.searchResult} searchValue={this.state.searchValue} />;
         } else if (this.state.searchFlag === FAILED) {
             content = (
-                <div className={style.wrapper}>
+                <div style={{
+                    height: '92%'
+                }}>
                     <Error text="哎呀，网络有点不给力" />
                 </div>
             );
         } else if (this.state.searchFlag === NODATA) {
             content = (
-                <div className={style.wrapper}>
+                <div style={{
+                    height: '92%'
+                }}>
                     <Error text="小点没有收到任何可用的数据" />
                 </div>
             );
@@ -98,7 +103,9 @@ class Search extends Component {
             if (searchValue) {
                 let list = window.JSON.parse(searchValue);
                 content = (
-                    <div className={style.wrapper}>
+                    <div style={{
+                        height: '92%'
+                    }}>
                         <History startSearch={this.startSearch} clearLocalStorage={this.clearLocalStorage} list={list} />
                     </div>
                 );

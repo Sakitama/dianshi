@@ -1,10 +1,5 @@
-:local .navigation {
-    height: 8%;
-}
-
 :local .btn {
     flex: 1;
-    font-size: 12px;
 }
 
 :local .icon {

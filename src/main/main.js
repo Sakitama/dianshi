@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import './main.css';
 import Subject from './subject/subject';
 import Detail from './detail/detail';
 import Search from './search/search';
+import More from './more/more';
 
 const NONE = 1;
 const SEARCH = 2;
@@ -11,7 +11,8 @@ const DETAIL = 3;
 class Main extends Component {
     state = {
         channelName: '',
-        flag: NONE
+        flag: NONE,
+        showMore: false
     };
 
     searchBackToMain = () => {
@@ -33,8 +34,16 @@ class Main extends Component {
         this.mainSwiperSlide(1);
     };
 
-    toUser = () => {
-        this.mainSwiperSlide(0);
+    showMore = () => {
+        this.setState({
+            showMore: true
+        });
+    };
+
+    hiddenMore = () => {
+        this.setState({
+            showMore: false
+        });
     };
 
     toSearch = () => {
@@ -68,21 +77,24 @@ class Main extends Component {
         if (this.state.flag === SEARCH) {
             content = <Search searchBackToMain={this.searchBackToMain} />;
         } else if (this.state.flag === DETAIL) {
-            content = <Detail detailBackToMain={this.detailBackToMain} width={this.props.width} channelName={this.state.channelName} />;
+            content = <Detail detailBackToMain={this.detailBackToMain} channelName={this.state.channelName} />;
         } else if (this.state.flag === NONE) {
             content = null;
         }
         return (
-            <div className="main-swiper swiper-container h100">
-                <div className="swiper-wrapper">
-                    <div className="swiper-slide">User</div>
-                    <div className="swiper-slide">
-                        <Subject toDetail={this.toDetail} toSearch={this.toSearch} toUser={this.toUser} mainSwiperSlide={this.mainSwiperSlide} width={this.props.width} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
-                    </div>
-                    <div className="swiper-slide">
-                        {content}
+            <div className="h100 pr">
+                <div className="main-swiper swiper-container h100">
+                    <div className="swiper-wrapper">
+                        <div className="swiper-slide">User</div>
+                        <div className="swiper-slide">
+                            <Subject toDetail={this.toDetail} toSearch={this.toSearch} showMore={this.showMore} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
+                        </div>
+                        <div className="swiper-slide">
+                            {content}
+                        </div>
                     </div>
                 </div>
+                <More hiddenMore={this.hiddenMore} showMore={this.state.showMore} />
             </div>
         )
     }

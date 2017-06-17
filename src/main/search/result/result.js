@@ -32,7 +32,9 @@ class Result extends Component {
             });
         let content = (
             <div>
-                <div className={`${style.count} tac`}>
+                <div style={{
+                    padding: '15px'
+                }} className="tac">
                     <span className={`${style.pre} wbba`}>搜索到{data.length}条关于“{this.props.searchValue}”的内容</span>
                 </div>
                 <ul>

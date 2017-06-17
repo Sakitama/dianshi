@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import style from './error.css';
 import img from './01.png';
 import circle from './circle.svg';
 
@@ -16,13 +15,23 @@ class Error extends Component {
 
     render() {
         return (
-            <div className={`${style.error} h100 df fdc aic jcc`}>
+            <div style={{
+                backgroundColor: '#DAD9D7'
+            }} className="h100 df fdc jcc aic">
                 <img src={img} alt="failed" />
-                <span className={style.text}>{this.props.text}</span>
+                <span style={{
+                    margin: '20px 0',
+                    color: '#555'
+                }}>{this.props.text}</span>
                 {this.props.shouldTry === 'yes' ? (
-                    <div onClick={this.click} className="df aic jcc">
-                        <img className={style.circle} src={circle} alt="circle" />
-                        <span className={style.try}>点我重试一次</span>
+                    <div onClick={this.click} className="df aic">
+                        <img style={{
+                            width: '24px'
+                        }} src={circle} alt="circle" />
+                        <span style={{
+                            fontSize: '12px',
+                            color: '#555'
+                        }}>点我重试一次</span>
                     </div>
                 ) : null}
             </div>

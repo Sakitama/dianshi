@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import style from './item.css';
 
 class Item extends Component {
     callNative = e => {
@@ -10,6 +9,7 @@ class Item extends Component {
 
     render() {
         let str = '',
+            width = document.body.clientWidth || document.documentElement.clientWidth,
             videoList = this.props.videoList,
             styleObj = null;
         return (
@@ -27,14 +27,25 @@ class Item extends Component {
                         }
                     }
                     styleObj = {
-                        height: `${9 * this.props.width / 16}px`
+                        height: `${9 * width / 16}px`
                     };
                     return (
                         <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} style={styleObj} key={index} className="df fdc jcfe pr">
                             <img className="pa w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg`} alt={video.short_title} />
                             <div className="mask pa h100 w100" />
-                            <span className={`${style.title} cfff`}>{video.title}</span>
-                            <span className={`${style.desc} cfff`}>{`已有${video.play_count_text}人观看${str}`}</span>
+                            <span style={{
+                                fontSize: '14px',
+                                lineHeight: '16px',
+                                padding: '0 12px',
+                                zIndex: '0'
+                            }} className="cfff">{video.title}</span>
+                            <span style={{
+                                fontSize: '12px',
+                                lineHeight: '14px',
+                                margin: '20px 0',
+                                padding: '0 12px',
+                                zIndex: '0'
+                            }} className="cfff">{`已有${video.play_count_text}人观看${str}`}</span>
                         </li>
                     )
                 })}

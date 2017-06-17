@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import style from './App.css';
 import Main from './main/main';
 import Start from './start/start';
 import Error from './main/detail/list/error/error';
@@ -62,12 +61,12 @@ class App extends Component {
         } else if (this.state.flag === NODATA) {
             content = <Error shouldTry="yes" text="小点没有收到任何可用的数据" tryAppFetchData={this.tryAppFetchData} />
         } else if (this.state.flag === COMPLETE) {
-            content = <Main width={this.div.clientWidth} newestPageData={this.state.newestPageData} channelPageData={this.state.channelPageData} />;
+            content = <Main newestPageData={this.state.newestPageData} channelPageData={this.state.channelPageData} />;
         }
         return (
-            <div ref={div => {
-                this.div = div;
-            }} className={`${style.App} h100`}>
+            <div style={{
+                backgroundColor: '#010101'
+            }} className="h100">
                 {content}
             </div>
         );

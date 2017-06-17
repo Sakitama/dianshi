@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import style from './newest.css';
 import Carousel from "./carousel/carousel";
 import Item from './item/item';
 
@@ -17,16 +16,19 @@ class Newest extends Component {
         for (let i = 1; i < data.length; i++) {
             list.push((
                 <li key={data[i].channel_id}>
-                    <div className={`${style.type} tac`}>
-                        <span className={`${style.text} cfff`}>{`- ${data[i].channel_name} -`}</span>
+                    <div style={{
+                        fontSize: '12px',
+                        padding: '1em'
+                    }} className="tac">
+                        <span className="cfff">{`- ${data[i].channel_name} -`}</span>
                     </div>
-                    <Item width={this.props.width} videoList={data[i].video_list} />
+                    <Item videoList={data[i].video_list} />
                 </li>
             ));
         }
         let content = (
             <div>
-                <Carousel width={this.props.width} data={data[0]} />
+                <Carousel data={data[0]} />
                 <ul>
                     {list}
                 </ul>

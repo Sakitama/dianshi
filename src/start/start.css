@@ -1,9 +1,0 @@
-:local .logo {
-    z-index: 0;
-    margin-top: -300px;
-    width: 100px;
-}
-
-:local .text {
-    bottom: 100px;
-}

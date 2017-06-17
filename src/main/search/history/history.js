@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import style from './history.css';
 
 class History extends Component {
     startSearch = e => {
@@ -14,21 +13,38 @@ class History extends Component {
     }
 
     render() {
-        let list = this.props.list.map((item, index) => (
-            <li data-value={item} onClick={this.startSearch} className={style.item} key={index}>
-                <span className={`${style.text} cfff wbba`}>{item}</span>
-            </li>
-        ));
+        let width = document.body.clientWidth || document.documentElement.clientWidth,
+            list = this.props.list.map((item, index) => (
+                <li data-value={item} onClick={this.startSearch} style={{
+                    padding: '15px 20px',
+                    borderBottom: '1px solid #2e2e2e'
+                }} key={index}>
+                    <span style={{
+                        fontSize: `12px`,
+                        lineHeight: `14px`
+                    }} className="cfff wbba">{item}</span>
+                </li>
+            ));
         return (
             <div ref={div => {
                 this.div = div;
-            }} className={`${style.history} h100 oh`}>
+            }} style={{
+                backgroundColor: '#202020'
+            }} className="h100 oh">
                 <div>
                     <ul>
                         {list}
                     </ul>
-                    <div className={`${style.wrap} tac`}>
-                        <span onClick={this.props.clearLocalStorage} className={style.btn}>清空历史记录</span>
+                    <div style={{
+                        padding: '20px 0'
+                    }} className="tac">
+                        <span onClick={this.props.clearLocalStorage} style={{
+                            fontSize: '12px',
+                            borderRadius: '20px',
+                            padding: '10px 30px',
+                            color: '#a3a3a3',
+                            backgroundColor: '#303030'
+                        }}>清空历史记录</span>
                     </div>
                 </div>
             </div>

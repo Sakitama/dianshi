@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import loading from './loading.svg';
-import style from './hot.css';
 
 class Hot extends Component {
     render() {
         return (
-            <div className={`${style.loading} df aic jcc`}>
-                <div className={`${style.wrapper} rotate`}>
+            <div style={{
+                height: '50px'
+            }} className="df jcc aic">
+                <div style={{
+                    width: '24px',
+                    height: '24px'
+                }} className="rotate">
                     <img className="w100" src={loading} alt="loading" />
                 </div>
             </div>
