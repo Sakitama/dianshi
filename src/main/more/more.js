@@ -18,10 +18,13 @@ class More extends Component {
         let to = e.currentTarget.dataset.to;
         if (to === 'index') {
             this.props.leftBackToMain();
+            this.props.hiddenMore();
         } else if (to === 'record') {
             this.props.toRecord();
+            this.props.hiddenMore();
         } else if (to === 'find') {
             this.props.toFind();
+            this.props.hiddenMore();
         }
         this.setState({
             current: to

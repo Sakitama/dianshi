@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Top from './top/top';
 import Error from '../detail/list/error/error';
 import style from './record.css';
+import eye from './eye.svg';
 
 class Record extends Component {
     componentDidMount() {
@@ -20,6 +21,7 @@ class Record extends Component {
     render() {
         let content = null,
             data = null,
+            date = [],
             video_list = [],
             viewHistory = window.localStorage.getItem('viewHistory');
         if (!viewHistory) {
@@ -28,6 +30,7 @@ class Record extends Component {
             data = window.JSON.parse(viewHistory);
             for (let video of data) {
                 video_list.push(window.JSON.parse(video.data));
+                date.push(video.date);
             }
             content = (
                 <div>
@@ -40,7 +43,15 @@ class Record extends Component {
                                     </div>
                                     <div className={`${style.text} df fdc`}>
                                         <span className={`${style.title} wbba cfff`}>{video.title}</span>
-                                        <span className={`${style.desc} wbba cfff`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>
+                                        <div style={{
+                                            marginTop: '15px'
+                                        }} className="df aic">
+                                            <img style={{
+                                                width: '20px',
+                                                marginRight: '10px'
+                                            }} src={eye} alt="eye" />
+                                            <span className={`${style.desc} wbba cfff`}>{date[index]}</span>
+                                        </div>
                                     </div>
                                 </li>
                             )
