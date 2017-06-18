@@ -19,8 +19,8 @@ class History extends Component {
                     borderBottom: '1px solid #2e2e2e'
                 }} key={index}>
                     <span style={{
-                        fontSize: `12px`,
-                        lineHeight: `14px`
+                        fontSize: '12px',
+                        lineHeight: '14px'
                     }} className="cfff wbba">{item}</span>
                 </li>
             ));
@@ -34,16 +34,18 @@ class History extends Component {
                     <ul>
                         {list}
                     </ul>
-                    <div style={{
-                        padding: '20px 0'
+                    <div onClick={this.props.clearLocalStorage} style={{
+                        padding: '15px 0'
                     }} className="tac">
-                        <span onClick={this.props.clearLocalStorage} style={{
+                        <p style={{
+                            width: '200px',
                             fontSize: '12px',
-                            borderRadius: '20px',
-                            padding: '10px 30px',
+                            lineHeight: '42px',
                             color: '#a3a3a3',
-                            backgroundColor: '#303030'
-                        }}>清空历史记录</span>
+                            backgroundColor: '#303030',
+                            borderRadius: '20px',
+                            margin: '0 auto'
+                        }} className="tac">清空历史记录</p>
                     </div>
                 </div>
             </div>

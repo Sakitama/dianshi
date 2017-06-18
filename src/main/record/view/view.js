@@ -48,16 +48,18 @@ class View extends Component {
                             );
                         })}
                     </ul>
-                    <div style={{
-                        padding: '20px 0'
+                    <div onClick={this.props.clearLocalStorage} style={{
+                        paddingBottom: '15px'
                     }} className="tac">
-                        <span onClick={this.props.clearLocalStorage} style={{
+                        <p style={{
+                            width: '200px',
                             fontSize: '12px',
-                            borderRadius: '20px',
-                            padding: '10px 30px',
+                            lineHeight: '42px',
                             color: '#a3a3a3',
-                            backgroundColor: '#303030'
-                        }}>清空历史记录</span>
+                            backgroundColor: '#303030',
+                            borderRadius: '20px',
+                            margin: '0 auto'
+                        }} className="tac">清空历史记录</p>
                     </div>
                 </div>
             </div>

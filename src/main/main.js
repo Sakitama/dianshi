@@ -119,9 +119,7 @@ class Main extends Component {
                         <div className="swiper-slide">
                             <Subject toDetail={this.toDetail} toSearch={this.toSearch} showMore={this.showMore} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
                         </div>
-                        <div className="swiper-slide">
-                            {content}
-                        </div>
+                        <div className="swiper-slide">{content}</div>
                     </div>
                 </div>
                 <More toRecord={this.toRecord} toFind={this.toFind} leftBackToMain={this.leftBackToMain} hiddenMore={this.hiddenMore} showMore={this.state.showMore} />

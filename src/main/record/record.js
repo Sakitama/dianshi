@@ -19,13 +19,11 @@ class Record extends Component {
         let content = null,
             data = null,
             date = [],
-            video_list = [],
-            viewHistory = null;
+            video_list = [];
         if (!this.state.viewHistory) {
             content = <Error noViewHistory="yes" text="再怎么找也没有啦" />;
         } else {
-            viewHistory = window.localStorage.getItem('viewHistory');
-            data = window.JSON.parse(viewHistory);
+            data = window.JSON.parse(this.state.viewHistory);
             for (let video of data) {
                 video_list.push(window.JSON.parse(video.data));
                 date.push(video.date);
