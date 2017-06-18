@@ -30,7 +30,7 @@ class Movie extends Component {
                     height: '92%'
                 }}>
                     {this.props.page ? (
-                        <iframe title={this.props.page} seamless height="100%" width="100%" src={`http://opeue8j3v.bkt.clouddn.com/page${this.props.page}.html`} />
+                        <iframe title={this.props.page} height="100%" width="100%" src={`http://opeue8j3v.bkt.clouddn.com/page${this.props.page}.html`} />
                     ) : null}
                 </div>
             </div>

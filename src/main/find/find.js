@@ -10,6 +10,9 @@ class Find extends Component {
 
     backToList = () => {
         this.FindSwiper.slideTo(0, 200, false);
+        this.setState({
+            page: ''
+        });
     };
 
     toDetailPage = e => {
