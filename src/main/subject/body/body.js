@@ -4,7 +4,7 @@ import Channel from './channel/channel';
 
 class Body extends Component {
     componentDidMount() {
-        this.bodySwiper = new window.Swiper('.App-swiper', {
+        this.bodySwiper = new window.Swiper('.Body-swiper', {
             resistanceRatio: 0,
             onTransitionEnd: swiper => {
                 this.props.slideTag(swiper.realIndex);
@@ -16,7 +16,7 @@ class Body extends Component {
 
     render() {
         return (
-            <div className="App-swiper swiper-container">
+            <div className="Body-swiper swiper-container">
                 <div className="swiper-wrapper">
                     <div className="swiper-slide">
                         <Newest newestPageData={this.props.newestPageData} />

@@ -4,6 +4,7 @@ import Detail from './detail/detail';
 import Search from './search/search';
 import More from './more/more';
 import Record from './record/record';
+import Find from "./find/find";
 
 const NONE = 1;
 const SEARCH = 2;
@@ -106,7 +107,7 @@ class Main extends Component {
         if (this.state.leftFlag === RECORD) {
             leftContent = <Record showMore={this.showMore} />;
         } else if (this.state.leftFlag === FIND) {
-            leftContent = 2;
+            leftContent = <Find showMore={this.showMore} />;
         } else if (this.state.leftFlag === NONE) {
             leftContent = null;
         }
