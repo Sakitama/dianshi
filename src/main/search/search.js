@@ -3,7 +3,7 @@ import Bar from './bar/bar';
 import Result from './result/result';
 import Loading from '../../loading/loading';
 import History from './history/history';
-import Error from "../detail/list/error/error";
+import Error from '../detail/list/error/error';
 
 const INIT = 1;
 const SEARCHING = 2;

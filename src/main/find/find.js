@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Top from '../record/top/top';
 import Movie from './movie/movie';
-import Queue from "./queue/queue";
+import Queue from './queue/queue';
 
 class Find extends Component {
     state = {

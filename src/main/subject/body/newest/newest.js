@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Carousel from "./carousel/carousel";
+import Carousel from './carousel/carousel';
 import Item from './item/item';
 
 class Newest extends Component {

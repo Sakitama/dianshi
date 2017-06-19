@@ -43,9 +43,9 @@ class Carousel extends Component {
                             zIndex: '0'
                         }} className="cfff wbba">{video.title}</span>
                         <span style={{
-                            fontSize: `12px`,
-                            lineHeight: `14px`,
-                            padding: `0 12px`,
+                            fontSize: '12px',
+                            lineHeight: '14px',
+                            padding: '0 12px',
                             zIndex: '0'
                         }} className="cfff wbba">{`已有${video.play_count_text}人观看${str}`}</span>
                     </div>
