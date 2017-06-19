@@ -17,7 +17,7 @@ window.util = {
         let date = getTime.call(new Date(), 'yyyy-MM-dd hh:mm:ss');
         let aid = e.currentTarget.dataset.aid;
         let tvid = e.currentTarget.dataset.tvid;
-        window.location.href = `iqiyi://mobile/player?aid='${aid}'&tvid='${tvid}'&ftype=27&to=3&url='${encodeURIComponent(window.location.href)}`;
+        window.location.href = `iqiyi://mobile/player?aid=${aid}&tvid=${tvid}&ftype=27&to=3&url=${encodeURIComponent(window.location.href)}`;
         let viewHistory = window.localStorage.getItem('viewHistory');
         if (!viewHistory) {
             window.localStorage.setItem('viewHistory', window.JSON.stringify([{
@@ -42,7 +42,6 @@ window.util = {
                 }
                 return arr;
             }
-
             viewHistory = uniqueArray(viewHistory);
             window.localStorage.setItem('viewHistory', window.JSON.stringify(viewHistory));
         }

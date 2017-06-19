@@ -13,7 +13,7 @@ class View extends Component {
     callNative = e => {
         let aid = e.currentTarget.dataset.aid;
         let tvid = e.currentTarget.dataset.tvid;
-        window.location.href = `iqiyi://mobile/player?aid='${aid}'&tvid='${tvid}'&ftype=27&to=3&url='${encodeURIComponent(window.location.href)}`;
+        window.location.href = `iqiyi://mobile/player?aid=${aid}&tvid=${tvid}&ftype=27&to=3&url=${encodeURIComponent(window.location.href)}`;
     };
 
     render() {
