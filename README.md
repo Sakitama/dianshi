@@ -10,3 +10,7 @@
 1. serve -s build
 1. 在浏览器中打开 http://localhost:5000/
 1. enjoy it!
+
+# Note
+
+播放视频需要本地安装爱奇艺客户端，点击想看的视频会自动调起爱奇艺客户端。
