@@ -65,11 +65,11 @@ class Search extends Component {
                         });
                     }
                 }).catch(reason => {
-                console.log(reason);
-                this.setState({
-                    searchFlag: FAILED
+                    console.log(reason);
+                    this.setState({
+                        searchFlag: FAILED
+                    });
                 });
-            });
             this.setState({
                 searchFlag: SEARCHING
             });
