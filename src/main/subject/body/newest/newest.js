@@ -10,12 +10,16 @@ class Newest extends Component {
         });
     }
 
+    toDetail = e => {
+        this.props.toDetail(e.currentTarget.dataset.channelname);
+    };
+
     render() {
         let list = [],
             data = this.props.newestPageData;
         for (let i = 1; i < data.length; i++) {
             list.push((
-                <li key={data[i].channel_id}>
+                <li data-channelName={data[i].channel_name} onClick={this.toDetail} key={data[i].channel_id}>
                     <div style={{
                         fontSize: '12px',
                         padding: '1em'

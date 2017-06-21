@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import style from './result.css';
 import noImage from './no-image.png';
 import Hot from '../../detail/list/hot/hot';
+import Describe from './describe/describe';
 
 class Result extends Component {
     state = {
-        loadingBlock: false
+        loadingBlock: false,
+        noDataBlock: false,
+        networkErrorBlock: false
     };
 
     callNative = e => {
@@ -33,18 +36,35 @@ class Result extends Component {
                     .then(json => {
                         if (json.data && json.data.length > 0) {
                             this.page++;
+                            this.isLoading = false;
                             this.props.getNewSearchResult(json.data);
+                            this.setState({
+                                loadingBlock: false
+                            });
+                        } else {
+                            this.setState({
+                                noDataBlock: true,
+                                loadingBlock: false
+                            });
+                            setTimeout(() => {
+                                this.isLoading = false;
+                                this.setState({
+                                    noDataBlock: false
+                                });
+                            }, 1500);
                         }
-                        this.isLoading = false;
-                        this.setState({
-                            loadingBlock: false
-                        });
                     }).catch(reason => {
                         console.log(reason);
-                        this.isLoading = false;
                         this.setState({
+                            networkErrorBlock: true,
                             loadingBlock: false
                         });
+                        setTimeout(() => {
+                            this.isLoading = false;
+                            this.setState({
+                                networkErrorBlock: false
+                            });
+                        }, 1500);
                     });
             }
         });
@@ -92,6 +112,12 @@ class Result extends Component {
                 </ul>
                 {this.state.loadingBlock ? (
                     <Hot />
+                ) : null}
+                {this.state.noDataBlock ? (
+                    <Describe text="再怎么找也没有啦！" />
+                ) : null}
+                {this.state.networkErrorBlock ? (
+                    <Describe text="网络出错啦，再试一次吧！" />
                 ) : null}
             </div>
         );

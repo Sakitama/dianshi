@@ -19,7 +19,7 @@ class Body extends Component {
             <div className="Body-swiper swiper-container">
                 <div className="swiper-wrapper">
                     <div className="swiper-slide">
-                        <Newest newestPageData={this.props.newestPageData} />
+                        <Newest toDetail={this.props.toDetail} newestPageData={this.props.newestPageData} />
                     </div>
                     <div className="swiper-slide">
                         <Channel toDetail={this.props.toDetail} channelPageData={this.props.channelPageData} />

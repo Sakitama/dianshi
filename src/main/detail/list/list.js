@@ -3,6 +3,7 @@ import Loading from '../../../loading/loading';
 import Item from '../../subject/body/newest/item/item';
 import Error from './error/error';
 import Hot from './hot/hot';
+import Describe from '../../search/result/describe/describe';
 
 const LOADING = 1;
 const FAILED = 2;
@@ -13,14 +14,14 @@ class List extends Component {
     state = {
         listPageData: null,
         flag: LOADING,
-        loadingBlock: false
+        loadingBlock: false,
+        noDataBlock: false,
+        networkErrorBlock: false
     };
 
     page = 1;
 
     isLoading = false;
-
-    total = 0;
 
     listFirstFetchData = () => {
         fetch(encodeURI(`http://iface.qiyi.com/openapi/realtime/channel?app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=10&dev_os=9&dev_ua=MI%205&dev_hw={cpu:0,gpu:,mem:50.4MB}&net_sts=1&scrn_sts=1&scrn_res=414*736&scrn_dpi=304704&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=GPhone&core=1&req_sn=1493946331320&req_times=1&type=detail&version=7.5&mode=11&page_size=30&page_num=${this.page}&channel_name=${this.props.channelName}`))
@@ -28,14 +29,13 @@ class List extends Component {
             .then(json => {
                 if (json.data && json.data.video_list && json.data.video_list.length > 0) {
                     this.page++;
-                    this.total = json.data.total;
                     this.listIScroll = new window.IScroll(this.div, {
                         click: true,
                         probeType: 3,
                         bounce: false
                     });
                     this.listIScroll.on('scroll', () => {
-                        if (!this.isLoading && (this.listIScroll.maxScrollY === this.listIScroll.y) && (this.page <= Math.ceil(this.total / 30))) {
+                        if (!this.isLoading && (this.listIScroll.maxScrollY === this.listIScroll.y)) {
                             this.setState({
                                 loadingBlock: true
                             });
@@ -45,21 +45,35 @@ class List extends Component {
                                 .then(json => {
                                     if (json.data && json.data.video_list && json.data.video_list.length > 0) {
                                         this.page++;
+                                        this.isLoading = false;
                                         this.setState(prevState => ({
                                             listPageData: prevState.listPageData.concat(json.data.video_list)
                                         }));
+                                    } else {
+                                        this.setState({
+                                            noDataBlock: true,
+                                            loadingBlock: false
+                                        });
+                                        setTimeout(() => {
+                                            this.isLoading = false;
+                                            this.setState({
+                                                noDataBlock: false
+                                            });
+                                        }, 1500);
                                     }
-                                    this.isLoading = false;
+                                }).catch(reason => {
+                                    console.log(reason);
                                     this.setState({
+                                        networkErrorBlock: true,
                                         loadingBlock: false
                                     });
-                                }).catch(reason => {
-                                console.log(reason);
-                                this.isLoading = false;
-                                this.setState({
-                                    loadingBlock: false
+                                    setTimeout(() => {
+                                        this.isLoading = false;
+                                        this.setState({
+                                            networkErrorBlock: false
+                                        });
+                                    }, 1500);
                                 });
-                            });
                         }
                     });
                     this.setState({
@@ -72,11 +86,11 @@ class List extends Component {
                     });
                 }
             }).catch(reason => {
-            console.log(reason);
-            this.setState({
-                flag: FAILED
+                console.log(reason);
+                this.setState({
+                    flag: FAILED
+                });
             });
-        });
     };
 
     tryListFirstFetchData = () => {
@@ -121,6 +135,12 @@ class List extends Component {
                     </ul>
                     {this.state.loadingBlock ? (
                         <Hot />
+                    ) : null}
+                    {this.state.noDataBlock ? (
+                        <Describe text="再怎么找也没有啦！" />
+                    ) : null}
+                    {this.state.networkErrorBlock ? (
+                        <Describe text="网络出错啦，再试一次吧！" />
                     ) : null}
                 </div>
             );
