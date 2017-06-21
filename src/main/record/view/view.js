@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import eye from './eye.svg';
 import style from './view.css';
+import noImage from './no-image.png';
 
 class View extends Component {
     componentDidMount() {
@@ -27,10 +28,22 @@ class View extends Component {
                 <div>
                     <ul>
                         {this.props.video_list.map((video, index) => {
+                            let imgObj = null;
+                            let changeImg = () => {
+                                imgObj.src = noImage;
+                                imgObj.style.width = '60px';
+                                imgObj.style.height = '60px';
+                                imgObj.style.left = '50%';
+                                imgObj.style.top = '50%';
+                                imgObj.style.marginLeft = '-30px';
+                                imgObj.style.marginTop = '-30px';
+                            };
                             return (
                                 <li onClick={this.callNative} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className={`${style.item} df aic`}>
-                                    <div className={style.iwrap}>
-                                        <img className="w100 h100" src={video.img} alt={video.short_title} />
+                                    <div className={`${style.iwrap} pr`}>
+                                        <img ref={img => {
+                                            imgObj = img;
+                                        }} className="pa w100 h100" src={video.img} alt={video.short_title} onError={changeImg} />
                                     </div>
                                     <div className={`${style.text} df fdc`}>
                                         <span className={`${style.title} wbba cfff`}>{video.title}</span>

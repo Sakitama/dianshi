@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import noImage from './no-image.png';
 
 class Carousel extends Component {
     callNative = e => {
@@ -15,13 +16,12 @@ class Carousel extends Component {
         });
     }
     render() {
-        let str = '',
-            width = document.body.clientWidth || document.documentElement.clientWidth,
+        let width = document.body.clientWidth || document.documentElement.clientWidth,
             styleHeight = {
                 height: `${79 * width / 160}px`
             },
             content = this.props.data.video_list.map((video, index) => {
-                str = '';
+                let str = '';
                 if (video.sns_score) {
                     str += ` | 评分${video.sns_score}`;
                 }
@@ -32,9 +32,21 @@ class Carousel extends Component {
                         str += ` | 更新至${video.update_num}集 / 共${video.total_num}集`;
                     }
                 }
+                let imgObj = null;
+                let changeImg = () => {
+                    imgObj.src = noImage;
+                    imgObj.style.width = '120px';
+                    imgObj.style.height = '120px';
+                    imgObj.style.left = '50%';
+                    imgObj.style.top = '50%';
+                    imgObj.style.marginLeft = '-60px';
+                    imgObj.style.marginTop = '-60px';
+                };
                 return (
                     <div onClick={this.callNative} data-video={window.JSON.stringify(video)} data-aid={video.a_id} data-tvid={video.tv_id} key={index} className="swiper-slide pr df fdc jcc tac">
-                        <img className="pa w100 h100" src={video.img} alt={video.short_title} />
+                        <img ref={img => {
+                            imgObj = img;
+                        }} className="pa w100 h100" src={video.img} alt={video.short_title} onError={changeImg} />
                         <div className="mask pa h100 w100" />
                         <span style={{
                             lineHeight: '18px',

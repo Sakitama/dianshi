@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import noImage from './no-image.png';
 
 class Item extends Component {
     callNative = e => {
@@ -6,14 +7,15 @@ class Item extends Component {
     };
 
     render() {
-        let str = '',
-            width = document.body.clientWidth || document.documentElement.clientWidth,
+        let width = document.body.clientWidth || document.documentElement.clientWidth,
             videoList = this.props.videoList,
-            styleObj = null;
+            styleObj = {
+                height: `${9 * width / 16}px`
+            };
         return (
             <ul>
                 {videoList.map((video, index) => {
-                    str = '';
+                    let str = '';
                     if (video.sns_score) {
                         str += ` | 评分${video.sns_score}`;
                     }
@@ -24,12 +26,21 @@ class Item extends Component {
                             str += ` | 更新至${video.update_num}集 / 共${video.total_num}集`;
                         }
                     }
-                    styleObj = {
-                        height: `${9 * width / 16}px`
+                    let imgObj = null;
+                    let changeImg = () => {
+                        imgObj.src = noImage;
+                        imgObj.style.width = '120px';
+                        imgObj.style.height = '120px';
+                        imgObj.style.left = '50%';
+                        imgObj.style.top = '50%';
+                        imgObj.style.marginLeft = '-60px';
+                        imgObj.style.marginTop = '-60px';
                     };
                     return (
                         <li onClick={this.callNative} data-video={window.JSON.stringify(video)} data-aid={video.a_id} data-tvid={video.tv_id} style={styleObj} key={index} className="df fdc jcfe pr">
-                            <img className="pa w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg`} alt={video.short_title} />
+                            <img ref={img => {
+                                imgObj = img;
+                            }} className="pa w100 h100" src={`${video.img.slice(0, video.img.lastIndexOf('.'))}_480_270.jpg`} alt={video.short_title} onError={changeImg} />
                             <div className="mask pa h100 w100" />
                             <span style={{
                                 fontSize: '14px',
