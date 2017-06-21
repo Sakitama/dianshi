@@ -18,6 +18,12 @@ class Search extends Component {
         searchFlag: INIT
     };
 
+    getNewSearchResult = newResult => {
+        this.setState(prevState => ({
+            searchResult: prevState.searchResult.concat(newResult)
+        }));
+    };
+
     clearLocalStorage = () => {
         window.localStorage.removeItem('searchValue');
         this.setState({
@@ -44,7 +50,7 @@ class Search extends Component {
                 window.localStorage.setItem('searchValue', window.JSON.stringify(searchValue));
             }
 
-            fetch(encodeURI(`http://iface.qiyi.com/openapi/batch/search?key=${value}&from=mobile_list&page_size=30&version=7.5&app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=12&dev_os=10.3.1&dev_ua=iPhone9,3&dev_hw=%7B%22cpu%22%3A0%2C%22gpu%22%3A%22%22%2C%22mem%22%3A%2250.4MB%22%7D&net_sts=1&scrn_sts=1&scrn_res=1334*750&scrn_dpi=153600&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=iPhone&core=1&req_sn=1493946331320&req_times=1`))
+            fetch(encodeURI(`http://iface.qiyi.com/openapi/realtime/search?app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=10&dev_os=9&dev_ua=MI%205&dev_hw={cpu:0,gpu:,mem:50.4MB}&net_sts=1&scrn_sts=1&scrn_res=320*568&scrn_dpi=181760&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=GPhone&core=1&req_sn=1493946331320&req_times=1&key=${value}&from=mobile_list&pg_num=1&page_size=30&version=7.5`))
                 .then(response => response.json())
                 .then(json => {
                     if (json.data && json.data.length > 0) {
@@ -59,11 +65,11 @@ class Search extends Component {
                         });
                     }
                 }).catch(reason => {
-                    console.log(reason);
-                    this.setState({
-                        searchFlag: FAILED
-                    });
+                console.log(reason);
+                this.setState({
+                    searchFlag: FAILED
                 });
+            });
             this.setState({
                 searchFlag: SEARCHING
             });
@@ -81,7 +87,7 @@ class Search extends Component {
                 </div>
             );
         } else if (this.state.searchFlag === COMPLETE) {
-            content = <Result searchResult={this.state.searchResult} searchValue={this.state.searchValue} />;
+            content = <Result getNewSearchResult={this.getNewSearchResult} searchResult={this.state.searchResult} searchValue={this.state.searchValue} />;
         } else if (this.state.searchFlag === FAILED) {
             content = (
                 <div style={{

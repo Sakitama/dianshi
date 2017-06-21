@@ -1,17 +1,61 @@
 import React, { Component } from 'react';
 import style from './result.css';
 import noImage from './no-image.png';
+import Hot from '../../detail/list/hot/hot';
 
 class Result extends Component {
+    state = {
+        loadingBlock: false
+    };
+
     callNative = e => {
         window.util.callNative(e);
     };
 
+    page = 2;
+
+    isLoading = false;
+
     componentDidMount() {
-        new window.IScroll(this.div, {
-            bounce: false,
-            click: true
+        this.resultIScroll = new window.IScroll(this.div, {
+            click: true,
+            probeType: 3,
+            bounce: false
         });
+        this.resultIScroll.on('scroll', () => {
+            if (!this.isLoading && (this.resultIScroll.maxScrollY === this.resultIScroll.y)) {
+                this.setState({
+                    loadingBlock: true
+                });
+                this.isLoading = true;
+                fetch(encodeURI(`http://iface.qiyi.com/openapi/realtime/search?app_k=f0f6c3ee5709615310c0f053dc9c65f2&app_v=8.4&app_t=0&platform_id=10&dev_os=9&dev_ua=MI%205&dev_hw={cpu:0,gpu:,mem:50.4MB}&net_sts=1&scrn_sts=1&scrn_res=320*568&scrn_dpi=181760&qyid=87390BD2-DACE-497B-9CD4-2FD14354B2A4&secure_v=1&secure_p=GPhone&core=1&req_sn=1493946331320&req_times=1&key=${this.props.searchValue}&from=mobile_list&pg_num=${this.page}&page_size=30&version=7.5`))
+                    .then(response => response.json())
+                    .then(json => {
+                        if (json.data && json.data.length > 0) {
+                            this.page++;
+                            this.props.getNewSearchResult(json.data);
+                        }
+                        this.isLoading = false;
+                        this.setState({
+                            loadingBlock: false
+                        });
+                    }).catch(reason => {
+                        console.log(reason);
+                        this.isLoading = false;
+                        this.setState({
+                            loadingBlock: false
+                        });
+                    });
+            }
+        });
+    }
+
+    componentDidUpdate() {
+        if (this.resultIScroll) {
+            setTimeout(() => {
+                this.resultIScroll.refresh();
+            }, 0);
+        }
     }
 
     render() {
@@ -43,14 +87,12 @@ class Result extends Component {
             });
         let content = (
             <div>
-                <div style={{
-                    padding: '15px'
-                }} className="tac">
-                    <span className={`${style.pre} wbba`}>搜索到{data.length}条关于“{this.props.searchValue}”的内容</span>
-                </div>
                 <ul>
                     {list}
                 </ul>
+                {this.state.loadingBlock ? (
+                    <Hot />
+                ) : null}
             </div>
         );
         return (

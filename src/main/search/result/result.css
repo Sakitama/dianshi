@@ -3,18 +3,8 @@
     background: #202020;
 }
 
-:local .pre {
-    font-size: 12px;
-    line-height: 14px;
-    color: #a6a6a6;
-}
-
 :local .item {
     padding: 15px 15px 0 15px;
-}
-
-:local .item:first-child {
-    padding-top: 0;
 }
 
 :local .item:last-child {
