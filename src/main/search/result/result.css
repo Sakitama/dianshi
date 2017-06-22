@@ -21,12 +21,6 @@
     flex: 1;
 }
 
-:local .desc {
-    font-size: 12px;
-    margin-top: 15px;
-    line-height: 14px;
-}
-
 :local .title {
     font-size: 14px;
     line-height: 16px;

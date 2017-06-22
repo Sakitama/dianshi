@@ -57,11 +57,11 @@ class App extends Component {
         if (this.state.flag === LOADING) {
             content = <Start />;
         } else if (this.state.flag === FAILED) {
-            content = <Error networkError="yes" shouldTry="yes" text="哎呀，网络有点不给力" tryAppFetchData={this.tryAppFetchData} />;
+            content = <Error networkError="yes" shouldTry="yes" text="哎呀，网络有点不给力" tryAppFetchData={this.tryAppFetchData}/>;
         } else if (this.state.flag === NODATA) {
-            content = <Error noData="yes" shouldTry="yes" text="小点没有收到任何可用的数据" tryAppFetchData={this.tryAppFetchData} />;
+            content = <Error noData="yes" shouldTry="yes" text="小点没有收到任何可用的数据" tryAppFetchData={this.tryAppFetchData}/>;
         } else if (this.state.flag === COMPLETE) {
-            content = <Main newestPageData={this.state.newestPageData} channelPageData={this.state.channelPageData} />;
+            content = <Main newestPageData={this.state.newestPageData} channelPageData={this.state.channelPageData}/>;
         }
         return (
             <div style={{

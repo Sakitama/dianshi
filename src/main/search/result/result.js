@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './result.css';
 import noImage from './no-image.png';
+import views from './ic_info_views.png';
 import Hot from '../../detail/list/hot/hot';
 import Describe from './describe/describe';
 
@@ -100,7 +101,18 @@ class Result extends Component {
                         </div>
                         <div className={`${style.text} df fdc`}>
                             <span className={`${style.title} wbba cfff`}>{video.title}</span>
-                            <span className={`${style.desc} wbba cfff`}>{`播放量 ${video.play_count_text} / ${video.date_format}`}</span>
+                            <div style={{
+                                marginTop: '15px'
+                            }} className="df aic">
+                                <img style={{
+                                    height: '15px'
+                                }} src={views} alt="views" />
+                                <span style={{
+                                    fontSize: '12px',
+                                    lineHeight: '14px',
+                                    marginLeft: '10px'
+                                }} className="wbba cfff">{video.play_count_text}</span>
+                            </div>
                         </div>
                     </li>
                 );
