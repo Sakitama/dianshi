@@ -14,3 +14,49 @@
 # 注意事项
 
 需要本地安装爱奇艺客户端，点击想看的视频会自动调起爱奇艺客户端进行播放。
+
+# 运行效果图
+
+## 启动图
+
+![](./demo/start.png)
+
+## 首页推荐
+
+![](./demo/newest.png)
+
+## 频道列表
+
+![](./demo/channel.png)
+
+## 频道详情
+
+![](./demo/channel-detail.png)
+
+## 搜索
+
+![](./demo/search.png)
+
+## 搜索结果展示
+
+![](./demo/search-result.png)
+
+## 历史搜索词列表
+
+![](./demo/search-history.png)
+
+## 更多
+
+![](./demo/more.png)
+
+## 观看历史记录
+
+![](./demo/view-history.png)
+
+## 发现
+
+![](./demo/find.png)
+
+## 发现文章内容展示
+
+![](./demo/find-detail.png)
