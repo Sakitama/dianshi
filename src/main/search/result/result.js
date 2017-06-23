@@ -105,11 +105,10 @@ class Result extends Component {
                                 marginTop: '15px'
                             }} className="df aic">
                                 <img style={{
-                                    height: '15px'
+                                    height: '20px'
                                 }} src={views} alt="views" />
                                 <span style={{
                                     fontSize: '12px',
-                                    lineHeight: '14px',
                                     marginLeft: '10px'
                                 }} className="wbba cfff">{video.play_count_text}</span>
                             </div>
