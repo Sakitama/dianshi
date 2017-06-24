@@ -6,11 +6,25 @@
 }
 
 :local .show {
-    display: block;
+    visibility: visible;
+    opacity: 1;
+    transition: all .1s linear;
 }
 
 :local .hidden {
-    display: none;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .1s linear .05s;
+}
+
+:local .btn-show {
+    transform: scale(1);
+    transition: all .1s cubic-bezier(1, 2.23, 1, .84) .1s;
+}
+
+:local .btn-hidden {
+    transform: scale(0);
+    transition: all .1s linear;
 }
 
 :local .icon {

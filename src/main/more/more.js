@@ -42,11 +42,11 @@ class More extends Component {
                     backgroundRepeat: 'no-repeat'
                 }} />
                 <div onClick={this.props.hiddenMore} style={{
-                    width: `${80 * width / 720}px`,
-                    height: `${80 * height / 921}px`,
-                    right: `${100 * width / 720}px`,
-                    bottom: `${100 * height / 921}px`
-                }} className="pa">
+                    width: `${120 * width / 720}px`,
+                    height: `${120 * height / 921}px`,
+                    right: `${80 * width / 720}px`,
+                    bottom: `${80 * height / 921}px`
+                }} className={`pa ${this.props.showMore ? style['btn-show'] : style['btn-hidden']}`}>
                     <img className="w100" src={close} alt="close" />
                 </div>
                 <ul style={{
