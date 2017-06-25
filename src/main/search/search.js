@@ -32,6 +32,8 @@ class Search extends Component {
     };
 
     startSearch = value => {
+        this.bar.input.value = value;
+        this.bar.input.blur();
         if (this.state.searchFlag !== SEARCHING && value !== '') {
             let searchValue = window.localStorage.getItem('searchValue');
             if (!searchValue) {
@@ -121,7 +123,9 @@ class Search extends Component {
         }
         return (
             <div className="h100">
-                <Bar startSearch={this.startSearch} searchBackToMain={this.props.searchBackToMain} />
+                <Bar ref={bar => {
+                    this.bar = bar;
+                }} startSearch={this.startSearch} searchBackToMain={this.props.searchBackToMain} />
                 {content}
             </div>
         );

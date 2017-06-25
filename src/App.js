@@ -50,18 +50,6 @@ class App extends Component {
 
     componentDidMount() {
         this.AppFetchData();
-        function addEvent (element, type, handler) {
-            if (element.addEventListener) {
-                element.addEventListener(type, handler, false);
-            } else if (element.attachEvent) {
-                element.attachEvent(`on${type}`, handler);
-            } else {
-                element[`on${type}`] = handler;
-            }
-        }
-        addEvent(window, 'resize', () => {
-            window.location.reload();
-        });
     }
 
     render() {
