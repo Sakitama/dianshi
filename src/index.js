@@ -4,7 +4,7 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-function addEvent (element, type, handler) {
+function addEvent(element, type, handler) {
     if (element.addEventListener) {
         element.addEventListener(type, handler, false);
     } else if (element.attachEvent) {
