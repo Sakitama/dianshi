@@ -47,7 +47,7 @@ class Item extends Component {
                                 lineHeight: '16px',
                                 padding: '0 12px',
                                 zIndex: '0'
-                            }} className="cfff">{video.title}</span>
+                            }} className="cfff">{video.short_title}</span>
                             <span style={{
                                 fontSize: '12px',
                                 lineHeight: '14px',
@@ -56,7 +56,7 @@ class Item extends Component {
                                 zIndex: '0'
                             }} className="cfff">{`已有${video.play_count_text}人观看${str}`}</span>
                         </li>
-                    )
+                    );
                 })}
             </ul>
         );
