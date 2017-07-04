@@ -33,12 +33,13 @@ class Newest extends Component {
             }
             list.push((
                 <li key={data[i].channel_id}>
-                    <p style={{
-                        paddingBottom: '10px'
+                    <p data-channelName={data[i].channel_name} onClick={this.toDetail} style={{
+                        marginBottom: '10px'
                     }} className="df fdc aic">
                         <span style={{
-                            fontWeight: 'bold'
-                        }} className="cfff">{`- ${data[i].channel_name} -`}</span>
+                            fontWeight: 'bold',
+                            marginTop: '10px'
+                        }} className="cfff">{`—— ${data[i].channel_name} ——`}</span>
                         <span style={{
                             fontSize: '12px',
                             color: '#888',

@@ -23,6 +23,24 @@ class App extends Component {
     AppFetchData = () => {
         Promise.all(urls.map(url => fetch(url).then(response => response.json()))).then(responseList => {
             if (responseList[0].data && (responseList[0].data.length > 0) && responseList[1].data && (responseList[1].data.length > 0)) {
+                let newestPageData = window.localStorage.getItem('newestPageData');
+                if (newestPageData) {
+                    newestPageData = window.JSON.parse(newestPageData);
+                    for (let i = 0, len1 = responseList[0].data.length; i < len1; i++) {
+                        for (let j = 0, len2 = responseList[0].data[i].video_list.length; j < len2; j++) {
+                            let exist = false;
+                            for (let k = 0, len3 = newestPageData[i].video_list.length; k < len3; k++) {
+                                if (newestPageData[i].video_list[k].id === responseList[0].data[i].video_list[j].id) {
+                                    exist = true;
+                                    break;
+                                }
+                            }
+                            if (!exist) {
+                                responseList[0].data[i].video_list[j].is_new = '1';
+                            }
+                        }
+                    }
+                }
                 window.localStorage.setItem('newestPageData', window.JSON.stringify(responseList[0].data));
                 window.localStorage.setItem('channelPageData', window.JSON.stringify(responseList[1].data));
                 this.setState({

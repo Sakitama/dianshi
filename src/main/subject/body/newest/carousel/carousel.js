@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import noImage from './no-image.png';
 import vip from './poster_label_pay.png';
+import newest from './discover_new_icon.png';
 
 class Carousel extends Component {
     callNative = e => {
@@ -74,8 +75,15 @@ class Carousel extends Component {
                                 <img style={{
                                     left: '0',
                                     top: '0',
-                                    width: '50px'
+                                    width: '38px'
                                 }} className="pa" src={vip} alt="vip-icon" />
+                            ) : null}
+                            {video.is_new === '1' ? (
+                                <img style={{
+                                    left: '0',
+                                    top: '0',
+                                    width: '108px'
+                                }} className="pa" src={newest} alt="newest-icon" />
                             ) : null}
                         </div>
                         <span style={{

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import noImage from './no-image.png';
 import vip from './poster_label_pay.png';
+import newest from './discover_new_icon.png';
 
 class Horizontal extends Component {
     callNative = e => {
@@ -11,7 +12,15 @@ class Horizontal extends Component {
         new window.Swiper(this.div, {
             loop: true,
             centeredSlides: true,
-            slidesPerView: 'auto'
+            slidesPerView: 'auto',
+            effect : 'coverflow',
+            coverflow: {
+                rotate: 30,
+                stretch: 10,
+                depth: 60,
+                modifier: 2,
+                slideShadows : true
+            }
         });
     }
 
@@ -26,14 +35,11 @@ class Horizontal extends Component {
                     {
                         videoList.map((video, index) => {
                             let str = '';
-                            if (video.sns_score) {
-                                str += ` | 评分${video.sns_score}`;
-                            }
                             if (Number(video.total_num) > 1) {
                                 if (Number(video.total_num) === Number(video.update_num)) {
-                                    str += ` | 全${video.total_num}集`;
+                                    str += `全${video.total_num}集`;
                                 } else {
-                                    str += ` | 更新至${video.update_num}集 / 共${video.total_num}集`;
+                                    str += `更新至${video.update_num}集 / 共${video.total_num}集`;
                                 }
                             }
                             let imgObj = null;
@@ -49,11 +55,11 @@ class Horizontal extends Component {
                             };
                             return (
                                 <div onClick={this.callNative} data-video={window.JSON.stringify(video)} data-aid={video.a_id} data-tvid={video.tv_id} style={{
-                                    width: '90%',
+                                    width: '70%',
                                     margin: '0 5px'
                                 }} key={index} className="swiper-slide">
                                     <div style={{
-                                        height: `${9 * width / 16 * 0.9}px`
+                                        height: `${9 * width / 16 * 0.7}px`
                                     }} className="pr">
                                         <img ref={img => {
                                             imgObj = img;
@@ -62,8 +68,32 @@ class Horizontal extends Component {
                                             <img style={{
                                                 left: '0',
                                                 top: '0',
-                                                width: '50px'
+                                                width: '28px'
                                             }} className="pa" src={vip} alt="vip-icon" />
+                                        ) : null}
+                                        {video.is_new === '1' ? (
+                                            <img style={{
+                                                left: '0',
+                                                top: '0',
+                                                width: '98px'
+                                            }} className="pa" src={newest} alt="newest-icon" />
+                                        ) : null}
+                                        {video.sns_score ? (<p style={{
+                                            right: '0',
+                                            bottom: '0',
+                                            color: '#eb6558',
+                                            padding: '2px 5px',
+                                            fontSize: '12px',
+                                            backgroundColor: 'rgba(0, 0, 0, .6)'
+                                        }} className="pa">{video.sns_score}</p>) : null}
+                                        {str ? (
+                                            <p style={{
+                                                left: '0',
+                                                bottom: '0',
+                                                padding: '2px 5px',
+                                                fontSize: '12px',
+                                                backgroundColor: 'rgba(0, 0, 0, .6)'
+                                            }} className="cfff wbba pa">{str}</p>
                                         ) : null}
                                     </div>
                                     <p style={{
@@ -76,7 +106,7 @@ class Horizontal extends Component {
                                             fontSize: '12px',
                                             marginTop: '10px',
                                             color: '#888'
-                                        }}>{`已有${video.play_count_text}人观看${str}`}</span>
+                                        }}>{`已有${video.play_count_text}人观看`}</span>
                                     </p>
                                 </div>
                             );
