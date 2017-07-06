@@ -22,7 +22,7 @@ class App extends Component {
 
     AppFetchData = () => {
         Promise.all(urls.map(url => fetch(url).then(response => response.json()))).then(responseList => {
-            if (responseList[0].data && (responseList[0].data.length > 0) && responseList[1].data && (responseList[1].data.length > 0)) {
+            if (responseList[0].data && (responseList[0].data.length === 5) && responseList[1].data && (responseList[1].data.length > 0)) {
                 let newestPageData = window.localStorage.getItem('newestPageData');
                 if (newestPageData) {
                     newestPageData = window.JSON.parse(newestPageData);

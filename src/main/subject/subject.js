@@ -28,7 +28,7 @@ class Subject extends Component {
         return (
             <div className="h100">
                 <Navigation toSearch={this.props.toSearch} showMore={this.props.showMore} currentSlide={this.state.currentSlide} slideTo={this.slideTo} />
-                <Body toDetail={this.props.toDetail} slideTag={this.slideTag} getSwiper={this.getSwiper} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
+                <Body toSee={this.props.toSee} toDetail={this.props.toDetail} slideTag={this.slideTag} getSwiper={this.getSwiper} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
             </div>
         )
     }

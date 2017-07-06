@@ -2,17 +2,13 @@ import React, { Component } from 'react';
 import arrow from './arrow.svg';
 
 class Head extends Component {
-    detailBackToMain = () => {
-        this.props.detailBackToMain();
-    };
-
     render() {
         return (
             <div style={{
                 fontSize: '12px',
                 height: '8%'
             }} className="df">
-                <div onClick={this.detailBackToMain} style={{
+                <div onClick={this.props.detailBackToMain} style={{
                     paddingLeft: '1em',
                     flex: '1'
                 }} className="df aic">

@@ -4,21 +4,27 @@ import Detail from './detail/detail';
 import Search from './search/search';
 import More from './more/more';
 import Record from './record/record';
-import Find from "./find/find";
+import Find from './find/find';
+import Clock from './clock/clock';
+import See from './see/see';
 
 const NONE = 1;
 const SEARCH = 2;
 const DETAIL = 3;
 const RECORD = 4;
 const FIND = 5;
+const SEE = 6;
 
 class Main extends Component {
     state = {
-        channelName: '',
         flag: NONE,
         leftFlag: NONE,
         showMore: false
     };
+
+    channelName = '';
+
+    quickIndex = 0;
 
     searchBackToMain = () => {
         this.mainSwiperSlide(1);
@@ -29,8 +35,16 @@ class Main extends Component {
 
     detailBackToMain = () => {
         this.mainSwiperSlide(1);
+        this.channelName = '';
         this.setState({
-            channelName: '',
+            flag: NONE
+        });
+    };
+
+    seeBackToMain = () => {
+        this.mainSwiperSlide(1);
+        this.quickIndex = 0;
+        this.setState({
             flag: NONE
         });
     };
@@ -75,10 +89,18 @@ class Main extends Component {
         });
     };
 
+    toSee = index => {
+        this.mainSwiperSlide(2);
+        this.quickIndex = index;
+        this.setState({
+            flag: SEE
+        });
+    };
+
     toDetail = channelName => {
         this.mainSwiperSlide(2);
+        this.channelName = channelName;
         this.setState({
-            channelName: channelName,
             flag: DETAIL
         });
     };
@@ -100,7 +122,9 @@ class Main extends Component {
         if (this.state.flag === SEARCH) {
             content = <Search searchBackToMain={this.searchBackToMain} />;
         } else if (this.state.flag === DETAIL) {
-            content = <Detail detailBackToMain={this.detailBackToMain} channelName={this.state.channelName} />;
+            content = <Detail detailBackToMain={this.detailBackToMain} channelName={this.channelName} />;
+        } else if (this.state.flag === SEE) {
+            content = <See seeBackToMain={this.seeBackToMain} quickIndex={this.quickIndex} />;
         } else if (this.state.flag === NONE) {
             content = null;
         }
@@ -117,12 +141,13 @@ class Main extends Component {
                     <div className="swiper-wrapper">
                         <div className="swiper-slide">{leftContent}</div>
                         <div className="swiper-slide">
-                            <Subject toDetail={this.toDetail} toSearch={this.toSearch} showMore={this.showMore} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
+                            <Subject toSee={this.toSee} toDetail={this.toDetail} toSearch={this.toSearch} showMore={this.showMore} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
                         </div>
                         <div className="swiper-slide">{content}</div>
                     </div>
                 </div>
                 <More toRecord={this.toRecord} toFind={this.toFind} leftBackToMain={this.leftBackToMain} hiddenMore={this.hiddenMore} showMore={this.state.showMore} />
+                <Clock />
             </div>
         )
     }

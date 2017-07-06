@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Newest from './newest/newest';
 import Channel from './channel/channel';
+import Quick from './quick/quick';
 
 class Body extends Component {
     componentDidMount() {
@@ -25,6 +26,9 @@ class Body extends Component {
                     </div>
                     <div className="swiper-slide">
                         <Channel toDetail={this.props.toDetail} channelPageData={this.props.channelPageData} />
+                    </div>
+                    <div className="swiper-slide">
+                        <Quick toSee={this.props.toSee} />
                     </div>
                 </div>
             </div>

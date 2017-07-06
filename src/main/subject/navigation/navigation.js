@@ -31,6 +31,9 @@ class Navigation extends Component {
                 <div data-index="1" onClick={this.slideTo} className={`${style.btn} ${style.border} df jcc aic ${this.props.currentSlide === 1 ? style.active : 'c808080'}`}>
                     <span>频道</span>
                 </div>
+                <div data-index="2" onClick={this.slideTo} className={`${style.btn} ${style.border} df jcc aic ${this.props.currentSlide === 2 ? style.active : 'c808080'}`}>
+                    <span>快看</span>
+                </div>
                 <div onClick={this.toSearch} className={`${style.search} ${style.btn} df aic jcfe`}>
                     <img className={style.icon} src={search} alt="search-icon" />
                 </div>
