@@ -24,9 +24,10 @@ class See extends Component {
                         <div style={{
                             left: 0,
                             top: 0,
-                            width: '70px',
-                            height: '30px',
-                            backgroundColor: '#000'
+                            width: `${70 * width / 414}px`,
+                            height: `${30 * width / 414}px`,
+                            backgroundColor: '#000',
+                            borderRadius: '5px'
                         }} className="pa cfff df jcc aic">
                             <span>{i - 1}</span>
                         </div>

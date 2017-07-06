@@ -7,6 +7,7 @@ import Record from './record/record';
 import Find from './find/find';
 import Clock from './clock/clock';
 import See from './see/see';
+import Vr from './vr/vr';
 
 const NONE = 1;
 const SEARCH = 2;
@@ -26,15 +27,19 @@ class Main extends Component {
 
     quickIndex = 0;
 
+    toVr = () => {
+        this.mainSwiperSlide(0);
+    };
+
     searchBackToMain = () => {
-        this.mainSwiperSlide(1);
+        this.mainSwiperSlide(2);
         this.setState({
             flag: NONE
         });
     };
 
     detailBackToMain = () => {
-        this.mainSwiperSlide(1);
+        this.mainSwiperSlide(2);
         this.channelName = '';
         this.setState({
             flag: NONE
@@ -42,7 +47,7 @@ class Main extends Component {
     };
 
     seeBackToMain = () => {
-        this.mainSwiperSlide(1);
+        this.mainSwiperSlide(2);
         this.quickIndex = 0;
         this.setState({
             flag: NONE
@@ -50,7 +55,7 @@ class Main extends Component {
     };
 
     leftBackToMain = () => {
-        this.mainSwiperSlide(1);
+        this.mainSwiperSlide(2);
         this.setState({
             leftFlag: NONE
         });
@@ -69,28 +74,28 @@ class Main extends Component {
     };
 
     toRecord = () => {
-        this.mainSwiperSlide(0);
+        this.mainSwiperSlide(1);
         this.setState({
             leftFlag: RECORD
         });
     };
 
     toFind = () => {
-        this.mainSwiperSlide(0);
+        this.mainSwiperSlide(1);
         this.setState({
             leftFlag: FIND
         });
     };
 
     toSearch = () => {
-        this.mainSwiperSlide(2);
+        this.mainSwiperSlide(3);
         this.setState({
             flag: SEARCH
         });
     };
 
     toSee = index => {
-        this.mainSwiperSlide(2);
+        this.mainSwiperSlide(3);
         this.quickIndex = index;
         this.setState({
             flag: SEE
@@ -98,7 +103,7 @@ class Main extends Component {
     };
 
     toDetail = channelName => {
-        this.mainSwiperSlide(2);
+        this.mainSwiperSlide(3);
         this.channelName = channelName;
         this.setState({
             flag: DETAIL
@@ -112,7 +117,7 @@ class Main extends Component {
     componentDidMount() {
         this.mainSwiper = new window.Swiper('.main-swiper', {
             onlyExternal: true,
-            initialSlide: 1
+            initialSlide: 2
         });
     }
 
@@ -139,6 +144,9 @@ class Main extends Component {
             <div className="h100 pr">
                 <div className="main-swiper swiper-container h100">
                     <div className="swiper-wrapper">
+                        <div className="swiper-slide">
+                            <Vr showMore={this.showMore} />
+                        </div>
                         <div className="swiper-slide">{leftContent}</div>
                         <div className="swiper-slide">
                             <Subject toSee={this.toSee} toDetail={this.toDetail} toSearch={this.toSearch} showMore={this.showMore} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
@@ -146,7 +154,7 @@ class Main extends Component {
                         <div className="swiper-slide">{content}</div>
                     </div>
                 </div>
-                <More toRecord={this.toRecord} toFind={this.toFind} leftBackToMain={this.leftBackToMain} hiddenMore={this.hiddenMore} showMore={this.state.showMore} />
+                <More toVr={this.toVr} toRecord={this.toRecord} toFind={this.toFind} leftBackToMain={this.leftBackToMain} hiddenMore={this.hiddenMore} showMore={this.state.showMore} />
                 <Clock />
             </div>
         )

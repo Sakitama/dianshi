@@ -8,6 +8,8 @@ import series1 from './side_series.png';
 import series2 from './side_series_.png';
 import behind1 from './side_behind.png';
 import behind2 from './side_behind_.png';
+import vr1 from './vr.png';
+import vr2 from './vr-dark.png';
 
 class More extends Component {
     state = {
@@ -24,6 +26,9 @@ class More extends Component {
             this.props.hiddenMore();
         } else if (to === 'find') {
             this.props.toFind();
+            this.props.hiddenMore();
+        } else if (to === 'vr') {
+            this.props.toVr();
             this.props.hiddenMore();
         }
         this.setState({
@@ -69,6 +74,12 @@ class More extends Component {
                     }} data-to="find" onClick={this.clickTo} className={`${style.item} df aic${this.state.current === 'find' ? ` ${style.active}` : ''}`}>
                         <img className={style.icon} src={this.state.current === 'find' ? behind1 : behind2} alt="find" />
                         <span className={`${style.text}${this.state.current === 'find' ? ' cfff' : ''}`}>发现</span>
+                    </li>
+                    <li style={{
+                        padding: `${15 * height / 921}px ${50 * width / 720}px`
+                    }} data-to="vr" onClick={this.clickTo} className={`${style.item} df aic${this.state.current === 'vr' ? ` ${style.active}` : ''}`}>
+                        <img className={style.icon} src={this.state.current === 'vr' ? vr1 : vr2} alt="find" />
+                        <span className={`${style.text}${this.state.current === 'vr' ? ' cfff' : ''}`}>VR</span>
                     </li>
                 </ul>
             </div>

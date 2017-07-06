@@ -12,10 +12,10 @@ class Subject extends Component {
     };
 
     slideTo = index => {
+        this.bodySwiper.slideTo(index, 200, false);
         this.setState({
             currentSlide: index
         });
-        this.bodySwiper.slideTo(index, 200, false);
     };
 
     slideTag = index => {

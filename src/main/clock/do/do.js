@@ -3,10 +3,10 @@ import wait from './ic_bangumi_timeline_first_dialog.png';
 
 class Do extends Component {
     state = {
-        str: '00 : 60'
+        str: '10 : 00'
     };
 
-    time = 59;
+    time = 599;
 
     timer = null;
 

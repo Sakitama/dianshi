@@ -26,7 +26,7 @@ class Clock extends Component {
 
     hiddenClock = () => {
         this.timer = setInterval(() => {
-            if (this.time === 600) {
+            if (this.time === 1800) {
                 clearInterval(this.timer);
                 this.time = 0;
                 this.setState({
@@ -55,7 +55,7 @@ class Clock extends Component {
 
     componentDidMount() {
         this.timer = setInterval(() => {
-            if (this.time === 600) {
+            if (this.time === 1800) {
                 clearInterval(this.timer);
                 this.time = 0;
                 this.setState({
