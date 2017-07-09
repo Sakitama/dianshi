@@ -19,44 +19,60 @@
 
 ## 启动图
 
-![](./demo/start.png)
+![](./demo/1.png)
 
 ## 首页推荐
 
-![](./demo/newest.png)
+![](./demo/2.png)
 
 ## 频道列表
 
-![](./demo/channel.png)
+![](./demo/3.png)
 
 ## 频道详情
 
-![](./demo/channel-detail.png)
+![](./demo/4.png)
 
 ## 搜索
 
-![](./demo/search.png)
+![](./demo/5.png)
 
 ## 搜索结果展示
 
-![](./demo/search-result.png)
+![](./demo/6.png)
 
 ## 历史搜索词列表
 
-![](./demo/search-history.png)
+![](./demo/7.png)
 
 ## 更多
 
-![](./demo/more.png)
+![](./demo/8.png)
 
 ## 观看历史记录
 
-![](./demo/view-history.png)
+![](./demo/9.png)
 
 ## 发现
 
-![](./demo/find.png)
+![](./demo/10.png)
 
 ## 发现文章内容展示
 
-![](./demo/find-detail.png)
+![](./demo/11.png)
+
+## 快看，以图文的形式快速看完一部电影
+
+![](./demo/12.png)
+
+## 快看电影内容
+
+![](./demo/13.png)
+
+## VR
+
+![](./demo/14.png)
+
+## VR效果
+
+![](./demo/15.jpg)
