@@ -46,10 +46,10 @@ class Vr extends Component {
 
     render() {
         return (
-            <div className="h100">
+            <div className="h100 df fdc">
                 <Top showMore={this.props.showMore} title="VR" />
                 <div style={{
-                    height: '92%'
+                    flex: '1'
                 }}>
                     <a-scene>
                         <a-assets>

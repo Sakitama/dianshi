@@ -18,8 +18,8 @@ class Body extends Component {
     render() {
         return (
             <div style={{
-                height: '92%'
-            }} className="Body-swiper swiper-container">
+                flex: '1'
+            }} className="w100 Body-swiper swiper-container">
                 <div className="swiper-wrapper">
                     <div className="swiper-slide">
                         <Newest toDetail={this.props.toDetail} newestPageData={this.props.newestPageData} />

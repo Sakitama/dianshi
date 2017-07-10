@@ -26,7 +26,7 @@ class Subject extends Component {
 
     render() {
         return (
-            <div className="h100">
+            <div className="h100 df fdc">
                 <Navigation toSearch={this.props.toSearch} showMore={this.props.showMore} currentSlide={this.state.currentSlide} slideTo={this.slideTo} />
                 <Body toSee={this.props.toSee} toDetail={this.props.toDetail} slideTag={this.slideTag} getSwiper={this.getSwiper} newestPageData={this.props.newestPageData} channelPageData={this.props.channelPageData} />
             </div>

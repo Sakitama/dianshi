@@ -22,7 +22,7 @@ class View extends Component {
             <div ref={div => {
                 this.div = div;
             }} style={{
-                height: '92%',
+                flex: '1',
                 backgroundColor: '#202020'
             }} className="oh">
                 <div>

@@ -4,10 +4,10 @@ import arrow from './arrow.svg';
 class Movie extends Component {
     render() {
         return (
-            <div className="h100">
+            <div className="h100 df fdc">
                 <div style={{
                     fontSize: '12px',
-                    height: '8%'
+                    height: '56px'
                 }} className="df">
                     <div style={{
                         paddingLeft: '1em',
@@ -27,7 +27,7 @@ class Movie extends Component {
                     }} />
                 </div>
                 <div style={{
-                    height: '92%'
+                    flex: '1'
                 }}>
                     {this.props.page ? (
                         <iframe title={this.props.page} height="100%" width="100%" src={`http://opeue8j3v.bkt.clouddn.com/page${this.props.page}.html`} />

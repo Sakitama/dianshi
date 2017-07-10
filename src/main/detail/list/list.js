@@ -155,7 +155,7 @@ class List extends Component {
             <div ref={div => {
                 this.div = div;
             }} style={{
-                height: '92%'
+                flex: '1'
             }} className="oh">
                 {content}
             </div>

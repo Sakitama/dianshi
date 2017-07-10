@@ -46,7 +46,7 @@ class Queue extends Component {
             <div ref={div => {
                 this.div = div;
             }} style={{
-                height: '92%',
+                flex: '1',
                 backgroundColor: '#ebebeb'
             }} className="oh">
                 <div>

@@ -7,7 +7,7 @@ class Top extends Component {
         return (
             <div style={{
                 fontSize: '12px',
-                height: '8%'
+                height: '56px'
             }} className="df">
                 <div onClick={this.props.showMore} className={`${style.menu} ${style.btn} df aic`}>
                     <img className={style.icon} src={menu} alt="menu-icon" />

@@ -9,7 +9,7 @@ class Carousel extends Component {
     };
 
     componentDidMount() {
-        new window.Swiper('.carousel-swiper', {
+        this.carouselSwiper = new window.Swiper('.carousel-swiper', {
             loop: true,
             autoplay: 4000,
             autoplayDisableOnInteraction: false,
@@ -22,6 +22,7 @@ class Carousel extends Component {
             }
         });
     }
+
     render() {
         let width = document.body.clientWidth || document.documentElement.clientWidth,
             content = this.props.data.video_list.map((video, index) => {

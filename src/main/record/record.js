@@ -31,7 +31,7 @@ class Record extends Component {
             content = <View video_list={video_list} date={date} clearLocalStorage={this.clearLocalStorage} />;
         }
         return (
-            <div className="h100">
+            <div className="h100 df fdc">
                 <Top showMore={this.props.showMore} title="记录" />
                 {content}
             </div>

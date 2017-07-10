@@ -33,7 +33,7 @@ class Find extends Component {
             <div className="Find-swiper swiper-container h100">
                 <div className="swiper-wrapper">
                     <div className="swiper-slide">
-                        <div className="h100">
+                        <div className="h100 df fdc">
                             <Top showMore={this.props.showMore} title="发现" />
                             <Queue toDetailPage={this.toDetailPage} />
                         </div>

@@ -93,7 +93,7 @@ class Search extends Component {
         } else if (this.state.searchFlag === FAILED) {
             content = (
                 <div style={{
-                    height: '92%'
+                    flex: '1'
                 }}>
                     <Error networkError="yes" text="哎呀，网络有点不给力" />
                 </div>
@@ -101,7 +101,7 @@ class Search extends Component {
         } else if (this.state.searchFlag === NODATA) {
             content = (
                 <div style={{
-                    height: '92%'
+                    flex: '1'
                 }}>
                     <Error noData="yes" text="小点没有收到任何可用的数据" />
                 </div>
@@ -112,7 +112,7 @@ class Search extends Component {
                 let list = window.JSON.parse(searchValue);
                 content = (
                     <div style={{
-                        height: '92%'
+                        flex: '1'
                     }}>
                         <History startSearch={this.startSearch} clearLocalStorage={this.clearLocalStorage} list={list} />
                     </div>
@@ -122,7 +122,7 @@ class Search extends Component {
             }
         }
         return (
-            <div className="h100">
+            <div className="h100 df fdc">
                 <Bar ref={bar => {
                     this.bar = bar;
                 }} startSearch={this.startSearch} searchBackToMain={this.props.searchBackToMain} />

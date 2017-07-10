@@ -15,6 +15,7 @@ let urls = [
 
 class App extends Component {
     state = {
+        width: document.body.clientWidth || document.documentElement.clientWidth,
         flag: LOADING,
         newestPageData: null,
         channelPageData: null

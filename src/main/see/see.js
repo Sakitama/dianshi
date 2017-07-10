@@ -40,10 +40,10 @@ class See extends Component {
             ));
         }
         return (
-            <div className="h100">
+            <div className="h100 df fdc">
                 <div style={{
                     fontSize: '12px',
-                    height: '8%'
+                    height: '56px'
                 }} className="df">
                     <div onClick={this.props.seeBackToMain} style={{
                         paddingLeft: '1em',
@@ -65,7 +65,7 @@ class See extends Component {
                 <div ref={div => {
                     this.div = div;
                 }} style={{
-                    height: '92%',
+                    flex: '1',
                     backgroundColor: '#eee'
                 }} className="oh">
                     <div>

@@ -6,7 +6,7 @@ class Head extends Component {
         return (
             <div style={{
                 fontSize: '12px',
-                height: '8%'
+                height: '56px'
             }} className="df">
                 <div onClick={this.props.detailBackToMain} style={{
                     paddingLeft: '1em',
